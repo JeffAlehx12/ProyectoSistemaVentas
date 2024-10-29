@@ -95,14 +95,15 @@ public class Frm_Ctrl_SeleccionProductoSalida {
     Connection con = Conexion.conectar();
     DefaultTableModel model = new DefaultTableModel();
 
-    // Consulta SQL para obtener los datos de tb_producto y ordenarlos por idProducto
     String sql = "SELECT p.idProducto, p.nombre AS productoNombre, c.nombreCategoria, "
             + "pr.razonSocial AS proveedorNombre, p.cantidad_actual, i.imagen "
             + "FROM tb_producto p "
             + "JOIN tb_categoria c ON p.idCategoria = c.idCategoria "
             + "JOIN tb_proveedor pr ON p.idProveedor = pr.idProveedor "
             + "LEFT JOIN Imagenes i ON p.idImagen = i.idImagen "
+            + "WHERE p.estado = 1 "  // Filtrar por estado "1"
             + "ORDER BY p.idProducto ASC;";  // Ordenar por idProducto de forma ascendente
+
 
     try {
         Statement st = con.createStatement();

@@ -16,9 +16,7 @@ public class FromMenu extends javax.swing.JFrame {
        
     }
 
-    public JMenuItem getjMenuItem_actualizar_stock() {
-        return jMenuItem_actualizar_stock;
-    }
+  
 
    
     public JMenuItem getjMenuItem_cerrar_sesion() {
@@ -115,7 +113,6 @@ public class FromMenu extends javax.swing.JFrame {
         jMenuItem_gestionar_usuarios = new javax.swing.JMenuItem();
         jMenu2 = new javax.swing.JMenu();
         jMenuItem_gestionar_producto = new javax.swing.JMenuItem();
-        jMenuItem_actualizar_stock = new javax.swing.JMenuItem();
         jMenu9 = new javax.swing.JMenu();
         jMenuItem_Entradas = new javax.swing.JMenuItem();
         jMenuItem_Salidas = new javax.swing.JMenuItem();
@@ -175,17 +172,6 @@ public class FromMenu extends javax.swing.JFrame {
             }
         });
         jMenu2.add(jMenuItem_gestionar_producto);
-
-        jMenuItem_actualizar_stock.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        jMenuItem_actualizar_stock.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/nuevo.png"))); // NOI18N
-        jMenuItem_actualizar_stock.setText("Actualizar Stock");
-        jMenuItem_actualizar_stock.setPreferredSize(new java.awt.Dimension(200, 30));
-        jMenuItem_actualizar_stock.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMenuItem_actualizar_stockActionPerformed(evt);
-            }
-        });
-        jMenu2.add(jMenuItem_actualizar_stock);
 
         jMenuBar1.add(jMenu2);
 
@@ -390,10 +376,6 @@ public class FromMenu extends javax.swing.JFrame {
         
     }//GEN-LAST:event_jMenuItem_gestionar_productoActionPerformed
 
-    private void jMenuItem_actualizar_stockActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem_actualizar_stockActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jMenuItem_actualizar_stockActionPerformed
-
     private void jMenuItem_reportes_productosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem_reportes_productosActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jMenuItem_reportes_productosActionPerformed
@@ -493,7 +475,6 @@ public class FromMenu extends javax.swing.JFrame {
     public javax.swing.JMenuItem jMenuItem_InformacionEmpresa;
     public javax.swing.JMenuItem jMenuItem_Inventario;
     public javax.swing.JMenuItem jMenuItem_Salidas;
-    public javax.swing.JMenuItem jMenuItem_actualizar_stock;
     public javax.swing.JMenuItem jMenuItem_cerrar_sesion;
     public javax.swing.JMenuItem jMenuItem_gestionar_cliente;
     public javax.swing.JMenuItem jMenuItem_gestionar_producto;

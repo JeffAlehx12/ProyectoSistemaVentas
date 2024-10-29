@@ -1,6 +1,7 @@
 package controlador;
 
 
+import java.sql.Blob;
 import conexion.Conexion;
 import java.awt.Color;
 import java.awt.Component;
@@ -12,10 +13,13 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import java.awt.image.BufferedImage;
 import java.beans.PropertyVetoException;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
+import java.io.IOException;
+import java.io.InputStream;
 import vista.*;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -23,6 +27,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
+import javax.imageio.ImageIO;
 import javax.swing.ImageIcon;
 import javax.swing.JFileChooser;
 import javax.swing.JOptionPane;
@@ -57,7 +62,7 @@ public class Frm_Ctrl_Entrada {
         
         
         vista.setTitle("Registro de Entradas");
-        vista.setSize(new Dimension(1099, 730));
+        vista.setSize(new Dimension(1389, 714));
         vista.setLocation(400,20);
         vista.setVisible(true);
         
@@ -86,7 +91,7 @@ public class Frm_Ctrl_Entrada {
     
         private void jbtnRegistrarActionPerformed(java.awt.event.ActionEvent evt) {
 
-        // Variables para almacenar los valores de los campos de entrada
+    // Variables para almacenar los valores de los campos de entrada
     String motivo = vista.jcbxMotivo.getSelectedItem().toString();
     String documento = vista.jtxtDocumento.getText();
     String idProductoText = vista.jtxtIdProducto.getText();
@@ -143,6 +148,12 @@ public class Frm_Ctrl_Entrada {
         precioCosto = Double.parseDouble(precioCostoText);
     } catch (NumberFormatException e) {
         JOptionPane.showMessageDialog(null, "Por favor, asegúrese de que los campos numéricos sean válidos.");
+        return;
+    }
+
+    // Validar que la cantidad no sea negativa
+    if (cantidad <= 0) {
+        JOptionPane.showMessageDialog(null, "La cantidad no puede ser negativa o igual a 0.");
         return;
     }
 
@@ -321,56 +332,88 @@ public class Frm_Ctrl_Entrada {
 }
     
     void obtenerDetallesProducto(int idProducto) {
-        Connection con = null;
-        PreparedStatement pst = null;
-        ResultSet rs = null;
+    Connection con = null;
+    PreparedStatement pst = null;
+    PreparedStatement pstImagen = null; // Preparar para la consulta de imagen
+    ResultSet rs = null;
+    ResultSet rsImagen = null;
 
-        try {
-            con = Conexion.conectar(); // Conexión a la base de datos
-            String sql = "SELECT p.nombre, p.idCategoria, p.idProveedor, c.nombreCategoria AS nombreCategoria, "
-                    + "pr.razonSocial AS nombreProveedor, p.precioCosto " // Añadir precioCosto a la consulta
-                    + "FROM tb_producto p "
-                    + "JOIN tb_categoria c ON p.idCategoria = c.idCategoria "
-                    + "JOIN tb_proveedor pr ON p.idProveedor = pr.idProveedor "
-                    + "WHERE p.idProducto = ?";
+    try {
+        // Conexión a la base de datos
+        con = Conexion.conectar();
 
-            pst = con.prepareStatement(sql);
-            pst.setInt(1, idProducto);  // Asignación del parámetro
+        // Consulta principal para obtener detalles del producto
+        String sql = "SELECT p.nombre, p.idCategoria, p.idProveedor, p.idImagen, c.nombreCategoria AS nombreCategoria, "
+                + "pr.razonSocial AS nombreProveedor, p.precioCosto "
+                + "FROM tb_producto p "
+                + "JOIN tb_categoria c ON p.idCategoria = c.idCategoria "
+                + "JOIN tb_proveedor pr ON p.idProveedor = pr.idProveedor "
+                + "WHERE p.idProducto = ?";
 
-            rs = pst.executeQuery();
+        pst = con.prepareStatement(sql);
+        pst.setInt(1, idProducto);  // Asignación del parámetro
 
-            if (rs.next()) {
-                // Rellena los campos en InterEntradas
-                vista.jtxtIdProducto.setText(String.valueOf(idProducto));
-                vista.jtxtNombreProducto.setText(rs.getString("nombre"));
-                vista.jtxtIdCategoria.setText(String.valueOf(rs.getInt("idCategoria")));
-                vista.jtxtNombreCategoria.setText(rs.getString("nombreCategoria"));
-                vista.jtxtIdProveedor.setText(String.valueOf(rs.getInt("idProveedor")));
-                vista.jtxtNombreProveedor.setText(rs.getString("nombreProveedor"));
-                vista.jtxtPrecioCosto.setText(String.valueOf(rs.getDouble("precioCosto"))); // Rellenar el precio costo
+        rs = pst.executeQuery();
+
+        if (rs.next()) {
+            // Rellena los campos en InterEntradas
+            vista.jtxtIdProducto.setText(String.valueOf(idProducto));
+            vista.jtxtNombreProducto.setText(rs.getString("nombre"));
+            vista.jtxtIdCategoria.setText(String.valueOf(rs.getInt("idCategoria")));
+            vista.jtxtNombreCategoria.setText(rs.getString("nombreCategoria"));
+            vista.jtxtIdProveedor.setText(String.valueOf(rs.getInt("idProveedor")));
+            vista.jtxtNombreProveedor.setText(rs.getString("nombreProveedor"));
+            vista.jtxtPrecioCosto.setText(String.valueOf(rs.getDouble("precioCosto"))); // Rellenar el precio costo
+
+            // Obtener el ID de la imagen
+            int idImagen = rs.getInt("idImagen");
+            if (idImagen != 0) {  // Asegurarse de que hay una imagen asignada
+                // Consulta para obtener la imagen
+                String sqlImagen = "SELECT imagen FROM Imagenes WHERE idImagen = ?";
+                pstImagen = con.prepareStatement(sqlImagen);
+                pstImagen.setInt(1, idImagen);
+
+                rsImagen = pstImagen.executeQuery();
+                if (rsImagen.next()) {
+                    Blob blob = rsImagen.getBlob("imagen");
+                    if (blob != null) {  // Verificar que el blob no sea null
+                        InputStream is = blob.getBinaryStream();
+                        BufferedImage bufferedImage = ImageIO.read(is);
+                        ImageIcon imageIcon = new ImageIcon(bufferedImage);
+                        // Ajusta la imagen al tamaño del JLabel si es necesario
+                        Image image = imageIcon.getImage().getScaledInstance(
+                                vista.jlbImg.getWidth(), vista.jlbImg.getHeight(), Image.SCALE_SMOOTH);
+                        vista.jlbImg.setIcon(new ImageIcon(image));
+                    } else {
+                        // Si no hay imagen, limpiar el JLabel o asignar una imagen por defecto
+                        vista.jlbImg.setIcon(null);  // O colocar una imagen predeterminada
+                    }
+                }
             } else {
-                System.out.println("No se encontraron detalles para el ID de producto: " + idProducto);
+                // Si no hay ID de imagen asociado, limpiar el JLabel o asignar una imagen predeterminada
+                vista.jlbImg.setIcon(null);  // O colocar una imagen predeterminada
             }
 
-        } catch (SQLException ex) {
-            System.out.println("Error al obtener detalles del producto: " + ex.getMessage());
-            ex.printStackTrace(); // Imprimir traza de error
-        } finally {
-            try {
-                if (rs != null) {
-                    rs.close();
-                }
-                if (pst != null) {
-                    pst.close();
-                }
-                if (con != null) {
-                    con.close();
-                }
-            } catch (SQLException e) {
-                System.out.println("Error al cerrar recursos: " + e.getMessage());
-            }
+        } else {
+            System.out.println("No se encontraron detalles para el ID de producto: " + idProducto);
+        }
+
+    } catch (SQLException | IOException ex) {
+        System.out.println("Error al obtener detalles del producto: " + ex.getMessage());
+        ex.printStackTrace(); // Imprimir traza de error
+    } finally {
+        // Cierre de recursos en orden inverso a su apertura
+        try {
+            if (rsImagen != null) rsImagen.close();
+            if (pstImagen != null) pstImagen.close();
+            if (rs != null) rs.close();
+            if (pst != null) pst.close();
+            if (con != null) con.close();
+        } catch (SQLException e) {
+            System.out.println("Error al cerrar recursos: " + e.getMessage());
         }
     }
+}
     
     
     public void transportarDatosAEntradas(int idPendienteEntrada) {

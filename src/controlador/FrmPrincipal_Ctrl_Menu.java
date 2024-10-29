@@ -51,12 +51,7 @@ public class FrmPrincipal_Ctrl_Menu {
             }
         });
 
-        menu.jMenuItem_actualizar_stock.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                jMenuItem_actualizar_stockActionPerformed(e);
-            }
-        });
+    
         
         
         menu.jMenuItem_Entradas.addActionListener(new ActionListener() {
@@ -238,13 +233,7 @@ public class FrmPrincipal_Ctrl_Menu {
         }
     }
 
-    //este sera eliminado
-    private void jMenuItem_actualizar_stockActionPerformed(java.awt.event.ActionEvent evt) {
-
-        InterActualizarStock actualizarStock = new InterActualizarStock();
-        Frm_Ctrl_Stock stock = new Frm_Ctrl_Stock(actualizarStock);
-
-    }
+   
     
 
     ///////////////////////////////INVENTARIO////////////////////////////////////////

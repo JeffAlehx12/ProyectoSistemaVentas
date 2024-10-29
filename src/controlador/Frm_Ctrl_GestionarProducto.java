@@ -238,10 +238,12 @@ public class Frm_Ctrl_GestionarProducto {
     private void CargarTablaProductos() {
     Connection con = Conexion.conectar();
     DefaultTableModel model = new DefaultTableModel();
-    // Modifica la consulta para incluir una condición que filtre por estado "1"
-    String sql = "SELECT p.idProducto, p.nombre, p.descripcion, p.idProveedor, c.nombreCategoria, p.ubicacion, p.precioCosto, p.precioVenta, p.porcentajeIgv, p.precio_total " +
+    
+    // Modifica la consulta para incluir el nombre del proveedor usando razonSocial
+    String sql = "SELECT p.idProducto, p.nombre, p.descripcion, pr.razonSocial AS proveedor, c.nombreCategoria, p.ubicacion, p.precioCosto, p.precioVenta, p.porcentajeIgv, p.precio_total " +
                  "FROM tb_producto p " +
                  "JOIN tb_categoria c ON p.idCategoria = c.idCategoria " +
+                 "JOIN tb_proveedor pr ON p.idProveedor = pr.idProveedor " +  // Usar razonSocial
                  "WHERE p.estado = 1;";  // Filtra por estado "1"
     
     Statement st;
@@ -254,7 +256,7 @@ public class Frm_Ctrl_GestionarProducto {
         model.addColumn("ID°");  // ID
         model.addColumn("Nombre");
         model.addColumn("Descripcion");
-        model.addColumn("Proveedor");
+        model.addColumn("Proveedor");  // Columna para el proveedor
         model.addColumn("Categoria");
         model.addColumn("Ubicacion");
         model.addColumn("Precio Costo");

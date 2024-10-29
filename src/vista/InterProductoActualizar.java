@@ -64,6 +64,7 @@ public class InterProductoActualizar extends javax.swing.JInternalFrame {
         jlbImg = new javax.swing.JLabel();
         jbtnExaminar = new javax.swing.JButton();
         jbtnQuitar = new javax.swing.JButton();
+        jLabel15 = new javax.swing.JLabel();
 
         setBackground(new java.awt.Color(0, 153, 255));
         setClosable(true);
@@ -277,6 +278,10 @@ public class InterProductoActualizar extends javax.swing.JInternalFrame {
         jbtnQuitar.setText("Quitar");
         jPanel2.add(jbtnQuitar, new org.netbeans.lib.awtextra.AbsoluteConstraints(790, 390, 80, -1));
 
+        jLabel15.setForeground(new java.awt.Color(102, 102, 102));
+        jLabel15.setText("128px");
+        jPanel2.add(jLabel15, new org.netbeans.lib.awtextra.AbsoluteConstraints(960, 500, -1, -1));
+
         getContentPane().add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(-10, 60, 1110, 530));
 
         pack();
@@ -317,6 +322,7 @@ public class InterProductoActualizar extends javax.swing.JInternalFrame {
     private javax.swing.JLabel jLabel12;
     private javax.swing.JLabel jLabel13;
     private javax.swing.JLabel jLabel14;
+    private javax.swing.JLabel jLabel15;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;

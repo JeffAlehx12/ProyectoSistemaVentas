@@ -83,10 +83,7 @@ public class Frm_Ctrl_Login {
                     // Aquí puedes deshabilitar el botón específico
                     menu.getjMenuItem_gestionar_usuarios().setEnabled(false);
                    
-                    menu.getjMenuItem_gestionar_producto().setEnabled(false);
-                    menu.getjMenuItem_actualizar_stock().setEnabled(false);
-                    menu.getjMenuItem_actualizar_stock().setEnabled(false);
-                    menu.getjMenuItem_gestionar_inventario().setEnabled(false);
+                    menu.getjMenuItem_gestionar_producto().setEnabled(false); 
                     
                     menu.setTitle("Sistema de Venta - USUARIO");
                     
