@@ -86,7 +86,7 @@ public class InterEntradas extends javax.swing.JInternalFrame {
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel2.setText("ID Entrada");
-        jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 20, -1, -1));
+        jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 30, -1, -1));
 
         jtxtEntrada.setEnabled(false);
         jPanel1.add(jtxtEntrada, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 50, 96, -1));
