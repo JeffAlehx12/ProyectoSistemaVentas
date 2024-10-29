@@ -125,7 +125,7 @@ public class Frm_Ctrl_PendienteEntrada {
                         int resultado = ps.executeUpdate(); // Ejecutar la actualización
 
                         if (resultado > 0) {
-                            JOptionPane.showMessageDialog(null, "Entrada marcada como eliminada correctamente.");
+                            JOptionPane.showMessageDialog(null, "Entrada Pendiente eliminada correctamente.");
                             CargarTablaPendientes(); // Volver a cargar la tabla para reflejar los cambios
                         } else {
                             JOptionPane.showMessageDialog(null, "Error al marcar la entrada como eliminada.");

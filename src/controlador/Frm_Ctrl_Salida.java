@@ -39,7 +39,7 @@ public class Frm_Ctrl_Salida {
  
     InterSalidas vista;
 
-    private int idProducto;
+   
     private InterSeleccionProductoEntrada interSeleccionProductoSalida;
     private InterPendiente interPendiente;
 
@@ -56,12 +56,12 @@ public class Frm_Ctrl_Salida {
     private void init() {
         
         
-        vista.setTitle("Registro de Entradas");
+        vista.setTitle("Registro de Salidas");
         vista.setSize(new Dimension(1099, 697));
         vista.setLocation(400,20);
         vista.setVisible(true);
         
-        cargarIdEntrada();
+        cargarIdSalida();
         CargarTablaSalidas(vista.jtblSalida);
         
         FromMenu.desktopPane.add(vista);
@@ -89,12 +89,13 @@ public class Frm_Ctrl_Salida {
         // Variables para almacenar los valores de los campos de entrada
     String motivo = vista.jcbxMotivo.getSelectedItem().toString();
     String documento = vista.jtxtDocumento.getText();
+    String destinatario = vista.jtxtDestinatario.getText();
     String idProductoText = vista.jtxtIdProducto.getText();
     String idCategoriaText = vista.jtxtIdCategoria.getText();
     String idProveedorText = vista.jtxtIdProveedor.getText();
     java.util.Date fechaUtil = vista.jtxtFecha.getDate();
     String cantidadText = vista.jtxtCantidad.getText();
-    String precioCostoText = vista.jtxtPrecioCosto.getText();
+    String precioUnitarioText = vista.jtxtPrecioUnitario.getText();
     String obs = vista.jtxtObs.getText();
 
     // Validar que no haya campos vacíos
@@ -104,6 +105,10 @@ public class Frm_Ctrl_Salida {
     }
     if (documento.trim().isEmpty()) {
         JOptionPane.showMessageDialog(null, "El campo 'Documento' está vacío.");
+        return;
+    }
+    if (destinatario.trim().isEmpty()) {
+        JOptionPane.showMessageDialog(null, "El campo 'Destinatario' está vacío.");
         return;
     }
     if (idProductoText.trim().isEmpty()) {
@@ -126,28 +131,28 @@ public class Frm_Ctrl_Salida {
         JOptionPane.showMessageDialog(null, "El campo 'Cantidad' está vacío.");
         return;
     }
-    if (precioCostoText.trim().isEmpty()) {
-        JOptionPane.showMessageDialog(null, "El campo 'Precio Costo' está vacío.");
+    if (precioUnitarioText.trim().isEmpty()) {
+        JOptionPane.showMessageDialog(null, "El campo 'Precio Unitario' está vacío.");
         return;
     }
 
     // Convertir los valores numéricos una vez que se han validado
     int idProducto, idCategoria, idProveedor, cantidad;
-    double precioCosto;
+    double precioUnitario;
 
     try {
         idProducto = Integer.parseInt(idProductoText);
         idCategoria = Integer.parseInt(idCategoriaText);
         idProveedor = Integer.parseInt(idProveedorText);
         cantidad = Integer.parseInt(cantidadText);
-        precioCosto = Double.parseDouble(precioCostoText);
+        precioUnitario = Double.parseDouble(precioUnitarioText);
     } catch (NumberFormatException e) {
         JOptionPane.showMessageDialog(null, "Por favor, asegúrese de que los campos numéricos sean válidos.");
         return;
     }
 
     java.sql.Date fecha = new java.sql.Date(fechaUtil.getTime());
-    double total = cantidad * precioCosto;
+    double total = cantidad * precioUnitario;
     int estado = 1;  // Estado por defecto: Activo (1)
     int confirmado = 0;  // Confirmado por defecto: No recibido (0)
 
@@ -164,31 +169,32 @@ public class Frm_Ctrl_Salida {
         ResultSet rsValidacion = psValidacion.executeQuery();
         if (rsValidacion.next() && rsValidacion.getInt(1) > 0) {
             // Si la validación es correcta, proceder a la inserción
-            String sqlInsercion = "INSERT INTO tb_entradas_pendientes "
-                    + "(motivo, documento, idProducto, idCategoria, idProveedor, fecha, cantidad, precioCosto, total, obs, estado, confirmado) "
-                    + "VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+            String sqlInsercion = "INSERT INTO tb_salidas_pendientes "
+                    + "(motivo, documento, destinatario, idProducto, idCategoria, idProveedor, fecha, cantidad, precio_unitario, total, obs, estado, confirmado) "
+                    + "VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
 
             PreparedStatement psInsercion = con.prepareStatement(sqlInsercion);
             psInsercion.setString(1, motivo);
             psInsercion.setString(2, documento);
-            psInsercion.setInt(3, idProducto);
-            psInsercion.setInt(4, idCategoria);
-            psInsercion.setInt(5, idProveedor);
-            psInsercion.setDate(6, fecha);
-            psInsercion.setInt(7, cantidad);
-            psInsercion.setDouble(8, precioCosto);
-            psInsercion.setDouble(9, total);
-            psInsercion.setString(10, obs);
-            psInsercion.setInt(11, estado);
-            psInsercion.setInt(12, confirmado);
+            psInsercion.setString(3, destinatario);
+            psInsercion.setInt(4, idProducto);
+            psInsercion.setInt(5, idCategoria);
+            psInsercion.setInt(6, idProveedor);
+            psInsercion.setDate(7, fecha);
+            psInsercion.setInt(8, cantidad);
+            psInsercion.setDouble(9, precioUnitario);
+            psInsercion.setDouble(10, total);
+            psInsercion.setString(11, obs);
+            psInsercion.setInt(12, estado);
+            psInsercion.setInt(13, confirmado);
 
             // Ejecutar la inserción
             int result = psInsercion.executeUpdate();
             if (result > 0) {
-                JOptionPane.showMessageDialog(null, "Confirmar Entrega.");
+                JOptionPane.showMessageDialog(null, "Confirmar Salida.");
                 limpiar();  // Limpia los campos después de la inserción
             } else {
-                JOptionPane.showMessageDialog(null, "Error al registrar la entrada.");
+                JOptionPane.showMessageDialog(null, "Error al registrar la Salida.");
             }
 
             psInsercion.close();
@@ -202,7 +208,7 @@ public class Frm_Ctrl_Salida {
         psValidacion.close();
         con.close();
     } catch (SQLException e) {
-        System.out.println("Error al registrar entrada pendiente: " + e);
+        System.out.println("Error al registrar salida pendiente: " + e);
     }
 }
       
@@ -330,7 +336,7 @@ public class Frm_Ctrl_Salida {
         try {
             con = Conexion.conectar(); // Conexión a la base de datos
             String sql = "SELECT p.nombre, p.idCategoria, p.idProveedor, c.nombreCategoria AS nombreCategoria, "
-                    + "pr.razonSocial AS nombreProveedor, p.precioCosto " // Añadir precioCosto a la consulta
+                    + "pr.razonSocial AS nombreProveedor, p.precioVenta " // Añadir precioVenta a la consulta
                     + "FROM tb_producto p "
                     + "JOIN tb_categoria c ON p.idCategoria = c.idCategoria "
                     + "JOIN tb_proveedor pr ON p.idProveedor = pr.idProveedor "
@@ -342,14 +348,14 @@ public class Frm_Ctrl_Salida {
             rs = pst.executeQuery();
 
             if (rs.next()) {
-                // Rellena los campos en InterEntradas
+                // Rellena los campos en InterSalidas
                 vista.jtxtIdProducto.setText(String.valueOf(idProducto));
                 vista.jtxtNombreProducto.setText(rs.getString("nombre"));
                 vista.jtxtIdCategoria.setText(String.valueOf(rs.getInt("idCategoria")));
                 vista.jtxtNombreCategoria.setText(rs.getString("nombreCategoria"));
                 vista.jtxtIdProveedor.setText(String.valueOf(rs.getInt("idProveedor")));
                 vista.jtxtNombreProveedor.setText(rs.getString("nombreProveedor"));
-                vista.jtxtPrecioCosto.setText(String.valueOf(rs.getDouble("precioCosto"))); // Rellenar el precio costo
+                vista.jtxtPrecioUnitario.setText(String.valueOf(rs.getDouble("precioVenta"))); // Rellenar el precio costo
             } else {
                 System.out.println("No se encontraron detalles para el ID de producto: " + idProducto);
             }
@@ -375,7 +381,7 @@ public class Frm_Ctrl_Salida {
     }
     
     
-    public void transportarDatosAEntradas(int idPendienteEntrada) {
+    public void transportarDatosASalidas(int idPendienteSalida) {
     Connection con = null;
     PreparedStatement pst = null;
     ResultSet rs = null;
@@ -384,45 +390,46 @@ public class Frm_Ctrl_Salida {
         con = Conexion.conectar(); // Conexión a la base de datos
         
         // Consulta para obtener los datos del pendiente seleccionado
-        String sqlSelect = "SELECT motivo, documento, idProducto, idCategoria, idProveedor, fecha, cantidad, precioCosto, total, obs, estado "
-                         + "FROM tb_entradas_pendientes WHERE idPendienteEntrada = ?";
+        String sqlSelect = "SELECT motivo, documento, destinatario, idProducto, idCategoria, idProveedor, fecha, cantidad, precio_unitario, total, obs, estado "
+                         + "FROM tb_salidas_pendientes WHERE idPendienteSalida = ?";
         pst = con.prepareStatement(sqlSelect);
-        pst.setInt(1, idPendienteEntrada);  // Asignación del parámetro
+        pst.setInt(1, idPendienteSalida);  // Asignación del parámetro
 
         rs = pst.executeQuery();
 
         if (rs.next()) {
-            // Prepara la inserción en la tabla tb_entradas
-            String sqlInsert = "INSERT INTO tb_entradas (motivo, documento, idProducto, idCategoria, idProveedor, fecha, cantidad, precioCosto, total, obs, estado) "
-                             + "VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+            // Prepara la inserción en la tabla tb_salidas
+            String sqlInsert = "INSERT INTO tb_salidas (motivo, documento, destinatario, idProducto, idCategoria, idProveedor, fecha, cantidad, precio_unitario, total, obs, estado) "
+                             + "VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ? ,?)";
             pst = con.prepareStatement(sqlInsert);
             pst.setString(1, rs.getString("motivo"));
             pst.setString(2, rs.getString("documento"));
-            pst.setInt(3, rs.getInt("idProducto"));
-            pst.setInt(4, rs.getInt("idCategoria"));
-            pst.setInt(5, rs.getInt("idProveedor"));
-            pst.setDate(6, rs.getDate("fecha"));
-            pst.setInt(7, rs.getInt("cantidad"));
-            pst.setDouble(8, rs.getDouble("precioCosto"));
-            pst.setDouble(9, rs.getDouble("total"));
-            pst.setString(10, rs.getString("obs"));
-            pst.setInt(11, rs.getInt("estado"));
+            pst.setString(3, rs.getString("destinatario"));
+            pst.setInt(4, rs.getInt("idProducto"));
+            pst.setInt(5, rs.getInt("idCategoria"));
+            pst.setInt(6, rs.getInt("idProveedor"));
+            pst.setDate(7, rs.getDate("fecha"));
+            pst.setInt(8, rs.getInt("cantidad"));
+            pst.setDouble(9, rs.getDouble("precio_unitario"));
+            pst.setDouble(10, rs.getDouble("total"));
+            pst.setString(11, rs.getString("obs"));
+            pst.setInt(12, rs.getInt("estado"));
 
             // Ejecuta la inserción
             pst.executeUpdate();
-            JOptionPane.showMessageDialog(vista, "Datos transportados a la tabla de entradas con éxito.");
             
-            cargarIdEntrada();
+            
+            cargarIdSalida();
             CargarTablaSalidas(vista.jtblSalida);
             
             
             
         } else {
-            JOptionPane.showMessageDialog(vista, "No se encontraron datos para el ID de pendiente: " + idPendienteEntrada);
+            JOptionPane.showMessageDialog(vista, "No se encontraron datos para el ID de pendiente: " + idPendienteSalida);
         }
 
     } catch (SQLException ex) {
-        System.out.println("Error al transportar los datos a la tabla de entradas: " + ex.getMessage());
+        System.out.println("Error al transportar los datos a la tabla de salidas: " + ex.getMessage());
         ex.printStackTrace(); // Imprimir traza de error
     } finally {
         try {
@@ -435,7 +442,7 @@ public class Frm_Ctrl_Salida {
     }
 }
     
-    private void cargarIdEntrada() {
+    private void cargarIdSalida() {
     Connection con = null;
     PreparedStatement pst = null;
     ResultSet rs = null;
@@ -444,24 +451,24 @@ public class Frm_Ctrl_Salida {
         // Conexión a la base de datos
         con = Conexion.conectar();
         
-        // Consulta para obtener el último idEntradas
-        String sql = "SELECT COALESCE(MAX(idEntradas), 0) FROM tb_entradas";
+        // Consulta para obtener el último idSalidas
+        String sql = "SELECT COALESCE(MAX(idSalidas), 0) FROM tb_salidas";
         pst = con.prepareStatement(sql);
         
         rs = pst.executeQuery();
         
         if (rs.next()) {
-            int ultimoId = rs.getInt(1); // Obtener el valor de idEntradas
+            int ultimoId = rs.getInt(1); // Obtener el valor de idSalidas
             
             // Si no hay registros, inicializar en 0000, de lo contrario incrementar el valor
-            String nuevoIdEntrada = String.format("%04d", ultimoId + 1); // Formatea con 4 dígitos
+            String nuevoIdSalida = String.format("%04d", ultimoId + 1); // Formatea con 4 dígitos
             
             // Mostrar el nuevo ID en el campo jtxtEntrada
-            vista.jtxtEntrada.setText(nuevoIdEntrada);
+            vista.jtxtSalida.setText(nuevoIdSalida);
         }
         
     } catch (SQLException ex) {
-        System.out.println("Error al obtener el último idEntrada: " + ex.getMessage());
+        System.out.println("Error al obtener el último idSalida: " + ex.getMessage());
     } finally {
         try {
             if (rs != null) rs.close();
@@ -476,6 +483,7 @@ public class Frm_Ctrl_Salida {
     private void limpiar() {
     // Limpiar los campos de texto
     vista.jtxtDocumento.setText("");
+    vista.jtxtDestinatario.setText("");
     vista.jtxtIdProducto.setText("");
     vista.jtxtNombreProducto.setText("");
     vista.jtxtIdCategoria.setText("");
@@ -483,7 +491,7 @@ public class Frm_Ctrl_Salida {
     vista.jtxtIdProveedor.setText("");
     vista.jtxtNombreProveedor.setText("");
     vista.jtxtCantidad.setText("");
-    vista.jtxtPrecioCosto.setText("");
+    vista.jtxtPrecioUnitario.setText("");
     vista.jtxtObs.setText("");
 
     // Limpiar el campo de selección del motivo (JComboBox)

@@ -408,7 +408,7 @@ public class Frm_Ctrl_Entrada {
 
             // Ejecuta la inserción
             pst.executeUpdate();
-            JOptionPane.showMessageDialog(vista, "Datos transportados a la tabla de entradas con éxito.");
+           
             
             cargarIdEntrada();
             CargarTablaEntradas(vista.jtblEntrada);

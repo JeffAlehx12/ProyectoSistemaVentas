@@ -27,19 +27,21 @@ public class InterSalidas extends javax.swing.JInternalFrame {
         jbtnPendiente = new javax.swing.JButton();
         jPanel1 = new javax.swing.JPanel();
         jLabel2 = new javax.swing.JLabel();
-        jtxtEntrada = new javax.swing.JTextField();
+        jtxtSalida = new javax.swing.JTextField();
         jLabel3 = new javax.swing.JLabel();
         jtxtCantidad = new javax.swing.JTextField();
         jLabel5 = new javax.swing.JLabel();
         jLabel6 = new javax.swing.JLabel();
         jLabel7 = new javax.swing.JLabel();
-        jtxtPrecioCosto = new javax.swing.JTextField();
+        jtxtPrecioUnitario = new javax.swing.JTextField();
         jLabel10 = new javax.swing.JLabel();
         jtxtDocumento = new javax.swing.JTextField();
         jtxtFecha = new com.toedter.calendar.JDateChooser();
         jcbxMotivo = new javax.swing.JComboBox<>();
         jLabel18 = new javax.swing.JLabel();
         jtxtObs = new javax.swing.JTextField();
+        jtxtDestinatario = new javax.swing.JTextField();
+        jLabel19 = new javax.swing.JLabel();
         jPanel2 = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
         jtblSalida = new javax.swing.JTable();
@@ -88,8 +90,8 @@ public class InterSalidas extends javax.swing.JInternalFrame {
         jLabel2.setText("ID Entrada");
         jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 20, -1, -1));
 
-        jtxtEntrada.setEnabled(false);
-        jPanel1.add(jtxtEntrada, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 50, 96, -1));
+        jtxtSalida.setEnabled(false);
+        jPanel1.add(jtxtSalida, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 50, 96, -1));
 
         jLabel3.setText("Motivo");
         jPanel1.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 80, -1, -1));
@@ -99,36 +101,36 @@ public class InterSalidas extends javax.swing.JInternalFrame {
                 jtxtCantidadKeyReleased(evt);
             }
         });
-        jPanel1.add(jtxtCantidad, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 260, 205, -1));
+        jPanel1.add(jtxtCantidad, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 310, 205, -1));
 
         jLabel5.setText("Cantidad");
-        jPanel1.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 240, -1, -1));
+        jPanel1.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 290, -1, -1));
 
         jLabel6.setText("Fecha");
-        jPanel1.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 190, -1, -1));
+        jPanel1.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 240, -1, -1));
 
-        jLabel7.setText("Precio Costo");
-        jPanel1.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 290, -1, -1));
+        jLabel7.setText("Precio Unitario");
+        jPanel1.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 340, -1, -1));
 
-        jtxtPrecioCosto.addKeyListener(new java.awt.event.KeyAdapter() {
+        jtxtPrecioUnitario.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyReleased(java.awt.event.KeyEvent evt) {
-                jtxtPrecioCostoKeyReleased(evt);
+                jtxtPrecioUnitarioKeyReleased(evt);
             }
         });
-        jPanel1.add(jtxtPrecioCosto, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 310, 205, -1));
+        jPanel1.add(jtxtPrecioUnitario, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 360, 205, -1));
 
-        jLabel10.setText("Documento");
-        jPanel1.add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 140, -1, -1));
+        jLabel10.setText("Destinatario");
+        jPanel1.add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 190, -1, -1));
         jPanel1.add(jtxtDocumento, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 160, 205, -1));
 
         jtxtFecha.setForeground(new java.awt.Color(0, 0, 0));
-        jPanel1.add(jtxtFecha, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 210, 205, -1));
+        jPanel1.add(jtxtFecha, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 260, 205, -1));
 
         jcbxMotivo.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Seleccionar Motivo", "Venta", "Devolución a Proveedor ", "Transferencia de Almacén ", "Ajuste de Inventario ", "Uso Interno" }));
         jPanel1.add(jcbxMotivo, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 100, 200, 30));
 
         jLabel18.setText("Obs");
-        jPanel1.add(jLabel18, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 350, 60, -1));
+        jPanel1.add(jLabel18, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 400, 60, -1));
 
         jtxtObs.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         jtxtObs.setHorizontalAlignment(javax.swing.JTextField.CENTER);
@@ -137,7 +139,17 @@ public class InterSalidas extends javax.swing.JInternalFrame {
                 jtxtObsActionPerformed(evt);
             }
         });
-        jPanel1.add(jtxtObs, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 370, 200, 50));
+        jPanel1.add(jtxtObs, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 420, 200, 50));
+
+        jtxtDestinatario.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jtxtDestinatarioActionPerformed(evt);
+            }
+        });
+        jPanel1.add(jtxtDestinatario, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 210, 200, -1));
+
+        jLabel19.setText("Documento");
+        jPanel1.add(jLabel19, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 140, -1, -1));
 
         getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 90, 220, 490));
 
@@ -303,9 +315,9 @@ public class InterSalidas extends javax.swing.JInternalFrame {
 
     }//GEN-LAST:event_jtblSalidaMouseClicked
 
-    private void jtxtPrecioCostoKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jtxtPrecioCostoKeyReleased
+    private void jtxtPrecioUnitarioKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jtxtPrecioUnitarioKeyReleased
 
-    }//GEN-LAST:event_jtxtPrecioCostoKeyReleased
+    }//GEN-LAST:event_jtxtPrecioUnitarioKeyReleased
 
     private void jtxtCantidadKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jtxtCantidadKeyReleased
 
@@ -319,6 +331,10 @@ public class InterSalidas extends javax.swing.JInternalFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_jtxtObsActionPerformed
 
+    private void jtxtDestinatarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jtxtDestinatarioActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jtxtDestinatarioActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel jLabel1;
@@ -331,6 +347,7 @@ public class InterSalidas extends javax.swing.JInternalFrame {
     private javax.swing.JLabel jLabel16;
     private javax.swing.JLabel jLabel17;
     private javax.swing.JLabel jLabel18;
+    private javax.swing.JLabel jLabel19;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
@@ -351,8 +368,8 @@ public class InterSalidas extends javax.swing.JInternalFrame {
     public javax.swing.JComboBox<String> jcbxMotivo;
     public javax.swing.JTable jtblSalida;
     public javax.swing.JTextField jtxtCantidad;
+    public javax.swing.JTextField jtxtDestinatario;
     public javax.swing.JTextField jtxtDocumento;
-    public javax.swing.JTextField jtxtEntrada;
     public com.toedter.calendar.JDateChooser jtxtFecha;
     public javax.swing.JTextField jtxtIdCategoria;
     public javax.swing.JTextField jtxtIdProducto;
@@ -361,6 +378,7 @@ public class InterSalidas extends javax.swing.JInternalFrame {
     public javax.swing.JTextField jtxtNombreProducto;
     public javax.swing.JTextField jtxtNombreProveedor;
     public javax.swing.JTextField jtxtObs;
-    public javax.swing.JTextField jtxtPrecioCosto;
+    public javax.swing.JTextField jtxtPrecioUnitario;
+    public javax.swing.JTextField jtxtSalida;
     // End of variables declaration//GEN-END:variables
 }
