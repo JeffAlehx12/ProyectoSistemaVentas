@@ -226,11 +226,11 @@ public class Frm_Ctrl_GestionarCategoriaProducto {
      //metodo para mostrar todas las categorias registradas
     
     
-    private void CargarTablaCategorias(){
+   private void CargarTablaCategorias(){
         
         Connection con = Conexion.conectar();
         DefaultTableModel model = new DefaultTableModel();
-        String sql = "select idCategoria, nombreCategoria, estado from tb_categoria";
+        String sql = "select idCategoria, nombreCategoria from tb_categoria";
         Statement st;
         
         try {
@@ -242,13 +242,13 @@ public class Frm_Ctrl_GestionarCategoriaProducto {
             
             model.addColumn("idCategoria");
             model.addColumn("nombreCategoria");
-            model.addColumn("estado");
+    
             
             while (rs.next()) {  
                 
-                Object fila[] = new Object[3];
+                Object fila[] = new Object[2];
                 
-                for (int i = 0; i < 3; i++) {
+                for (int i = 0; i < 2; i++) {
                     
                     fila[i] = rs.getObject(i + 1);
                 
