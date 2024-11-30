@@ -19,6 +19,9 @@ import java.awt.Toolkit;
 import javax.swing.JDesktopPane;
 import javax.swing.JInternalFrame;
 import com.raven.form.*;
+import java.awt.Component;
+import java.util.Arrays;
+import javax.swing.JPanel;
 
 
 /**
@@ -35,14 +38,14 @@ public class Main extends javax.swing.JFrame {
     
     //IntenalFrames
     
-    private Form_Home home;
+    private Form_Hom home;
     private InterGestionarUsuario interGestionarUsuario;
     private InterGestionarProducto interGestionarProducto;
     
     
     
     
-    
+
     
     
     
@@ -83,7 +86,8 @@ public class Main extends javax.swing.JFrame {
         
         // Inicializa los InternalFrames
 
-        home = new Form_Home();
+        home = new Form_Hom();
+        
         
         
 
@@ -117,29 +121,43 @@ public class Main extends javax.swing.JFrame {
                     setForm(interGestionarProducto);
                 }
             }
+            
+            
         });
-
-
+        
+        
+        setForm(new Form_Hom());
+        
         
     }
 // Método para agregar el formulario al JDesktopPane
 
-    // Método para agregar formularios al JDesktopPane
     private void setForm(JComponent form) {
-        // Elimina todos los componentes anteriores
-        desktopPane.removeAll();
+        
+        
+        
+        // Oculta todos los componentes existentes en el DesktopPane
+        for (Component comp : desktopPane.getComponents()) {
+            comp.setVisible(false);
+        }
 
-       
-        // Asegúrate de que el formulario sea visible
+        // Verifica si el formulario ya está en el DesktopPane
+        if (!Arrays.asList(desktopPane.getComponents()).contains(form)) {
+            desktopPane.add(form); // Agrega el formulario si no está
+        }
+
+        // Configura visibilidad y tamaño para JPanel
+        if (form instanceof JPanel) {
+            form.setBounds(0, 0, desktopPane.getWidth(), desktopPane.getHeight()); // Asegura que el JPanel ocupe todo el espacio
+        }
+
+        // Muestra el formulario seleccionado
         form.setVisible(true);
 
-        // Añadir el formulario al JDesktopPane
-        desktopPane.add(form);
-
-        // Lleva el formulario al frente (si es un JInternalFrame)
+        // Lleva al frente si es un JInternalFrame
         if (form instanceof JInternalFrame) {
             try {
-                ((JInternalFrame) form).setSelected(true);  // Para internal frames
+                ((JInternalFrame) form).setSelected(true);
             } catch (java.beans.PropertyVetoException e) {
                 e.printStackTrace();
             }
@@ -248,7 +266,7 @@ public class Main extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private com.raven.component.Header header2;
-    private javax.swing.JPanel mainPanel;
+    public javax.swing.JPanel mainPanel;
     private com.raven.component.Menu menu;
     private com.raven.swing.PanelBorder panelBorder1;
     // End of variables declaration//GEN-END:variables

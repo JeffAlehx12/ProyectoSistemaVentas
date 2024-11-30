@@ -55,7 +55,12 @@ public class Menu extends javax.swing.JPanel {
         listMenu1.addItem(new Model_Menu("", "Configuracion", Model_Menu.MenuType.TITLE));
         listMenu1.addItem(new Model_Menu("11", "Informacion de la Empresa", Model_Menu.MenuType.MENU));
         listMenu1.addItem(new Model_Menu("", "", Model_Menu.MenuType.EMPTY));
+        
+        
+        
     }
+    
+   
 
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
@@ -67,7 +72,7 @@ public class Menu extends javax.swing.JPanel {
 
         panelMoving.setOpaque(false);
 
-        jLabel1.setFont(new java.awt.Font("sansserif", 1, 18)); // NOI18N
+        jLabel1.setFont(new java.awt.Font("SansSerif", 1, 18)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(255, 255, 255));
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/raven/icon/logo.png"))); // NOI18N
         jLabel1.setText("FarmaSmart");

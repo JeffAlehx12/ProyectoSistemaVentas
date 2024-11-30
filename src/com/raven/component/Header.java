@@ -1,8 +1,16 @@
 package com.raven.component;
 
+import java.awt.Color;
+import java.awt.Font;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
 import java.awt.RenderingHints;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
+import javax.swing.BorderFactory;
+import javax.swing.JMenuItem;
+import javax.swing.JOptionPane;
+import javax.swing.JPopupMenu;
 
 public class Header extends javax.swing.JPanel {
 
@@ -23,8 +31,19 @@ public class Header extends javax.swing.JPanel {
 
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/raven/icon/search.png"))); // NOI18N
 
+        searchText1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                searchText1ActionPerformed(evt);
+            }
+        });
+
         jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/raven/icon/menu.png"))); // NOI18N
         jLabel2.setBorder(javax.swing.BorderFactory.createEmptyBorder(5, 5, 5, 5));
+        jLabel2.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jLabel2MouseClicked(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
@@ -36,7 +55,7 @@ public class Header extends javax.swing.JPanel {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(searchText1, javax.swing.GroupLayout.DEFAULT_SIZE, 606, Short.MAX_VALUE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jLabel2)
+                .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
         layout.setVerticalGroup(
@@ -46,6 +65,90 @@ public class Header extends javax.swing.JPanel {
             .addComponent(jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, 45, Short.MAX_VALUE)
         );
     }// </editor-fold>//GEN-END:initComponents
+
+    private void jLabel2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel2MouseClicked
+// Crear un JPopupMenu estilizado
+        JPopupMenu popupMenu = new JPopupMenu();
+        popupMenu.setBorder(BorderFactory.createLineBorder(new Color(150, 150, 150), 1)); // Borde más moderno
+        popupMenu.setBackground(new Color(255, 255, 255)); // Fondo blanco para el menú
+
+// Crear las opciones del menú con estilos
+        JMenuItem opcion1 = new JMenuItem("Configuración general");
+        JMenuItem opcion2 = new JMenuItem("Cambiar tema");
+        JMenuItem opcion3 = new JMenuItem("Cerrar sesión");
+
+// Estilo para las opciones del menú
+        Font font = new Font("Tahoma", Font.PLAIN, 14); // Fuente más agradable y pequeña
+        opcion1.setFont(font);
+        opcion2.setFont(font);
+        opcion3.setFont(font);
+
+        opcion1.setBackground(new Color(255, 255, 255)); // Fondo blanco
+        opcion2.setBackground(new Color(255, 255, 255));
+        opcion3.setBackground(new Color(255, 255, 255));
+
+        opcion1.setForeground(new Color(60, 60, 60)); // Texto gris oscuro, más suave
+        opcion2.setForeground(new Color(60, 60, 60));
+        opcion3.setForeground(new Color(60, 60, 60));
+
+// Agregar efectos visuales al pasar el ratón
+        MouseAdapter hoverEffect = new MouseAdapter() {
+            @Override
+            public void mouseEntered(MouseEvent e) {
+                ((JMenuItem) e.getSource()).setBackground(new Color(230, 230, 230)); // Fondo claro al pasar el ratón
+            }
+
+            @Override
+            public void mouseExited(MouseEvent e) {
+                ((JMenuItem) e.getSource()).setBackground(Color.WHITE); // Fondo blanco al salir
+            }
+        };
+        opcion1.addMouseListener(hoverEffect);
+        opcion2.addMouseListener(hoverEffect);
+        opcion3.addMouseListener(hoverEffect);
+
+// Agregar acción a cada opción
+        opcion1.addActionListener(e -> {
+            JOptionPane.showMessageDialog(null, "Abrir configuración general");
+        });
+
+        opcion2.addActionListener(e -> {
+            JOptionPane.showMessageDialog(null, "Abrir configuraciones de tema");
+        });
+
+        opcion3.addActionListener(e -> {
+            int confirm = JOptionPane.showConfirmDialog(null,
+                    "¿Estás seguro de que deseas cerrar sesión?",
+                    "Confirmar salida", JOptionPane.YES_NO_OPTION);
+
+            if (confirm == JOptionPane.YES_OPTION) {
+                System.exit(0); // Cierra la aplicación
+            }
+        });
+
+// Agregar las opciones al menú
+        popupMenu.add(opcion1);
+        popupMenu.add(opcion2);
+        popupMenu.add(opcion3);
+
+// Mostrar el menú en la ubicación del clic
+        int x = evt.getX();
+        int y = evt.getY();
+
+// Ajustar la posición si el menú se sale del contenedor
+        int popupWidth = popupMenu.getPreferredSize().width; // Ancho del menú
+        int screenWidth = jLabel2.getWidth();                // Ancho del JLabel
+        if (x + popupWidth > screenWidth) {
+            x = screenWidth - popupWidth; // Mueve el menú hacia la izquierda
+        }
+
+        popupMenu.show(jLabel2, x, y);
+
+    }//GEN-LAST:event_jLabel2MouseClicked
+
+    private void searchText1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_searchText1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_searchText1ActionPerformed
 
     @Override
     protected void paintComponent(Graphics grphcs) {

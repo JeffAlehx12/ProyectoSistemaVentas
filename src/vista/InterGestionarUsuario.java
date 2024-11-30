@@ -149,7 +149,7 @@ public class InterGestionarUsuario extends javax.swing.JInternalFrame {
         jLabel5.setText("Estado:");
         jPanel1.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(810, 680, 90, 20));
 
-        jButton_eliminar.setBackground(new java.awt.Color(255, 51, 51));
+        jButton_eliminar.setBackground(new java.awt.Color(0, 153, 204));
         jButton_eliminar.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         jButton_eliminar.setText("Eliminar");
         jButton_eliminar.addActionListener(new java.awt.event.ActionListener() {
@@ -175,7 +175,7 @@ public class InterGestionarUsuario extends javax.swing.JInternalFrame {
         jLabel10.setText("Usuario:");
         jPanel1.add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(810, 560, 90, -1));
 
-        jButton_Guardar.setBackground(new java.awt.Color(0, 204, 204));
+        jButton_Guardar.setBackground(new java.awt.Color(0, 153, 204));
         jButton_Guardar.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         jButton_Guardar.setText("Guardar");
         jButton_Guardar.addActionListener(new java.awt.event.ActionListener() {
@@ -185,7 +185,7 @@ public class InterGestionarUsuario extends javax.swing.JInternalFrame {
         });
         jPanel1.add(jButton_Guardar, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 490, 130, 40));
 
-        jButton_editar.setBackground(new java.awt.Color(51, 204, 0));
+        jButton_editar.setBackground(new java.awt.Color(0, 153, 204));
         jButton_editar.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         jButton_editar.setText("Editar");
         jButton_editar.addActionListener(new java.awt.event.ActionListener() {
@@ -195,7 +195,7 @@ public class InterGestionarUsuario extends javax.swing.JInternalFrame {
         });
         jPanel1.add(jButton_editar, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 490, 130, 40));
 
-        jButton_Cancelar.setBackground(new java.awt.Color(255, 51, 51));
+        jButton_Cancelar.setBackground(new java.awt.Color(0, 153, 204));
         jButton_Cancelar.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         jButton_Cancelar.setText("Cancelar");
         jButton_Cancelar.addActionListener(new java.awt.event.ActionListener() {
@@ -266,7 +266,7 @@ public class InterGestionarUsuario extends javax.swing.JInternalFrame {
         jPanel4.setBackground(new java.awt.Color(27, 177, 221));
         jPanel4.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jLabel9.setFont(new java.awt.Font("Segoe UI Black", 1, 22)); // NOI18N
+        jLabel9.setFont(new java.awt.Font("SansSerif", 1, 19)); // NOI18N
         jLabel9.setForeground(new java.awt.Color(255, 255, 255));
         jLabel9.setText("GESTIONAR USUARIO");
         jPanel4.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 0, -1, 50));

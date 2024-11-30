@@ -42,7 +42,7 @@ public class Frm_Ctrl_GestionarCategoria {
         vista.setSize(new Dimension(896, 507));
         vista.setTitle("Gestionar Categorias");
         vista.setVisible(true);
-        
+        vista.setLocation(200, 50);
         
         
         
@@ -233,69 +233,63 @@ public class Frm_Ctrl_GestionarCategoria {
      //metodo para mostrar todas las categorias registradas
     
     
-    private void CargarTablaCategorias(){
-        
-        Connection con = Conexion.conectar();
-        DefaultTableModel model = new DefaultTableModel();
-        String sql = "select idCategoria, nombreCategoria from tb_categoria";
-        Statement st;
-        
-        try {
-            
-            st = con.createStatement();
-            ResultSet rs = st.executeQuery(sql);
-            vista.jTable_categoria = new JTable(model);
-            vista.jScrollPane1.setViewportView(vista.jTable_categoria);
-            
-            model.addColumn("idCategoria");
-            model.addColumn("nombreCategoria");
-    
-            
-            while (rs.next()) {  
-                
-                Object fila[] = new Object[2];
-                
-                for (int i = 0; i < 2; i++) {
-                    
-                    fila[i] = rs.getObject(i + 1);
-                
-                }
-                model.addRow(fila);
-                
+   private void CargarTablaCategorias() {
+
+    Connection con = Conexion.conectar();
+    DefaultTableModel model = new DefaultTableModel();
+    String sql = "SELECT idCategoria, nombreCategoria FROM tb_categoria ORDER BY idCategoria";  // Ordenar por idCategoria
+    Statement st;
+
+    try {
+
+        st = con.createStatement();
+        ResultSet rs = st.executeQuery(sql);
+        vista.jTable_categoria = new JTable(model);
+        vista.jScrollPane1.setViewportView(vista.jTable_categoria);
+
+        model.addColumn("idCategoria");
+        model.addColumn("nombreCategoria");
+
+        while (rs.next()) {
+
+            Object fila[] = new Object[2];
+
+            for (int i = 0; i < 2; i++) {
+
+                fila[i] = rs.getObject(i + 1);
+
             }
-            
-            con.close();
-            
-            
-        } catch (SQLException e) {
-            
-            System.out.println("Error al llenar la tabla categorias: " + e);
-            
+            model.addRow(fila);
+
         }
-        
-        
-        vista.jTable_categoria.addMouseListener(new MouseAdapter(){
-        
-            @Override
-            
-        public void mouseClicked(MouseEvent e){
-            
+
+        con.close();
+
+    } catch (SQLException e) {
+
+        System.out.println("Error al llenar la tabla categorias: " + e);
+
+    }
+
+    vista.jTable_categoria.addMouseListener(new MouseAdapter() {
+
+        @Override
+        public void mouseClicked(MouseEvent e) {
+
             int fila_point = vista.jTable_categoria.rowAtPoint(e.getPoint());
             int columna_point = 0;
-            
-            if(fila_point > -1){
-                
-                idCategoria= (int) model.getValueAt(fila_point, columna_point);
+
+            if (fila_point > -1) {
+
+                idCategoria = (int) model.getValueAt(fila_point, columna_point);
                 EnviarDatosCategoriaSeleccionada(idCategoria);
-            
+
             }
-        
-        
+
         }
-        
-        
-        });
-    }
+
+    });
+}
        
     
     

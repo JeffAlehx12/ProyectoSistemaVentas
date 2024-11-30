@@ -8,10 +8,13 @@ import com.raven.model.Model_Card;
 import com.raven.model.StatusType;
 import com.raven.swing.ScrollBar;
 import java.awt.Color;
+import java.awt.Dimension;
+import javax.swing.BorderFactory;
 import javax.swing.ImageIcon;
 import javax.swing.JInternalFrame;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
+import javax.swing.JTable;
 import javax.swing.plaf.basic.BasicInternalFrameUI;
 
 /**
@@ -23,13 +26,21 @@ public class Form_Hom extends javax.swing.JInternalFrame {
     /**
      * Creates new form Form_Hom
      */
+    
+    
     public Form_Hom() {
-        initComponents();
-        
-            // Eliminar la barra de título y botones de control (Cerrar, Minimizar, Maximizar)
-        JInternalFrame jif = this;
-    ((BasicInternalFrameUI) jif.getUI()).setNorthPane(null); // Quita la barra de título    // Eliminar la barra de título y botones de control (Cerrar, Minimizar, Maximizar)
-   
+    initComponents();
+
+    // Configuración inicial del formulario
+    this.setSize(new Dimension(1580, 845));
+
+    // Eliminar barra de título y bordes del JInternalFrame
+    JInternalFrame jif = this;
+    ((BasicInternalFrameUI) jif.getUI()).setNorthPane(null);
+    jif.setBorder(BorderFactory.createEmptyBorder());
+    jif.revalidate();
+    jif.repaint();
+
     
         card1.setData(new Model_Card(new ImageIcon(getClass().getResource("/com/raven/icon/stock.png")), "Stock Total", "$200000", "Increased by 60%"));
         card2.setData(new Model_Card(new ImageIcon(getClass().getResource("/com/raven/icon/profit.png")), "Total Profit", "$15000", "Increased by 25%"));
@@ -147,7 +158,7 @@ public class Form_Hom extends javax.swing.JInternalFrame {
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addGap(20, 20, 20)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(panelBorder1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(panelBorder1, javax.swing.GroupLayout.DEFAULT_SIZE, 777, Short.MAX_VALUE)
                     .addComponent(panel, javax.swing.GroupLayout.DEFAULT_SIZE, 777, Short.MAX_VALUE))
                 .addGap(20, 20, 20))
         );
