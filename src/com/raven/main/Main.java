@@ -30,112 +30,76 @@ import javax.swing.JPanel;
  */
 public class Main extends javax.swing.JFrame {
 
-    /**
-     * Creates new form Main
-     */
+     // Panel principal y DesktopPane
     public static JDesktopPane desktopPane;
-    
-    
-    //IntenalFrames
-    
+
+    // InternalFrames
     private Form_Hom home;
     private InterGestionarUsuario interGestionarUsuario;
     private InterGestionarProducto interGestionarProducto;
-    
-    
-    
-    
 
-    
-    
-    
-    
-    
-    
+    // Controladores
+    private Frm_Ctrl_GestionarUsuario ctrl_GestionarUsuario;
+    private Frm_Ctrl_GestionarProducto ctrl_GestionarProducto;
+
     public Main() {
         initComponents();
 
         // Crea un JDesktopPane personalizado
-        this.desktopPane = new JDesktopPane() {
-            private Image backgroundImage = new ImageIcon(getClass().getResource("/com/raven/icon/desktop_Jpanel.png")).getImage();
+        desktopPane = new JDesktopPane() {
+            private final Image backgroundImage = new ImageIcon(getClass().getResource("/com/raven/icon/desktop_Jpanel.png")).getImage();
 
             @Override
             protected void paintComponent(Graphics g) {
                 super.paintComponent(g);
-                // Dibuja la imagen escalada al tamaño del DesktopPane
                 g.drawImage(backgroundImage, 0, 0, getWidth(), getHeight(), this);
             }
         };
 
         // Configura el tamaño del JDesktopPane
-        int ancho = Toolkit.getDefaultToolkit().getScreenSize().width;
-        int alto = Toolkit.getDefaultToolkit().getScreenSize().height;
-        this.desktopPane.setBounds(0, 0, ancho, alto - 120);
+        Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
+        desktopPane.setBounds(0, 0, screenSize.width, screenSize.height - 120);
 
         // Agrega el desktopPane al mainPanel
-        mainPanel.setLayout(new BorderLayout()); // Configura el layout si aún no lo has hecho
-        mainPanel.add(this.desktopPane, BorderLayout.CENTER);
+        mainPanel.setLayout(new BorderLayout());
+        mainPanel.add(desktopPane, BorderLayout.CENTER);
 
-        
-        // Menu Tamaño
-        
-        this.setSize(new Dimension(1800, 900));
-        this.setLocationRelativeTo(null);
-        
-        
-        
-        // Inicializa los InternalFrames
+        // Configura tamaño de la ventana principal
+        setSize(new Dimension(1800, 900));
+        setLocationRelativeTo(null);
 
+        // Inicializa los formularios y controladores
         home = new Form_Hom();
-        
-        
-        
+        interGestionarUsuario = new InterGestionarUsuario();
+        interGestionarProducto = new InterGestionarProducto();
+        ctrl_GestionarUsuario = new Frm_Ctrl_GestionarUsuario(interGestionarUsuario);
+        ctrl_GestionarProducto = new Frm_Ctrl_GestionarProducto(interGestionarProducto);
 
-        
-
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
+        // Inicializa el menú
         menu.initMoving(Main.this);
         menu.addEventMenuSelected(new EventMenuSelected() {
             @Override
             public void selected(int index) {
-                if (index == 0) {
-                    setForm(home);  // Mostrar Form_Home
-                } else if (index == 2) {
-                    interGestionarUsuario = new InterGestionarUsuario();
-                    Frm_Ctrl_GestionarUsuario ctrl_GestionarUsuario = new Frm_Ctrl_GestionarUsuario(interGestionarUsuario);
-                    setForm(interGestionarUsuario);
-                } else if (index == 4) {
-                    interGestionarProducto = new InterGestionarProducto();
-                     Frm_Ctrl_GestionarProducto ctrl_GestionarProducto = new Frm_Ctrl_GestionarProducto(interGestionarProducto);
-                    
-                    setForm(interGestionarProducto);
+                switch (index) {
+                    case 0:
+                        setForm(home);
+                        break;
+                    case 2:
+                        setForm(interGestionarUsuario);
+                        break;
+                    case 4:
+                        setForm(interGestionarProducto);
+                        break;
                 }
             }
-            
-            
         });
-        
-        
-        setForm(new Form_Hom());
-        
-        
-    }
-// Método para agregar el formulario al JDesktopPane
 
+        // Muestra la pantalla de inicio
+        setForm(home);
+    }
+
+    // Método para agregar el formulario al JDesktopPane
     private void setForm(JComponent form) {
-        
-        
-        
         // Oculta todos los componentes existentes en el DesktopPane
         for (Component comp : desktopPane.getComponents()) {
             comp.setVisible(false);
@@ -148,7 +112,7 @@ public class Main extends javax.swing.JFrame {
 
         // Configura visibilidad y tamaño para JPanel
         if (form instanceof JPanel) {
-            form.setBounds(0, 0, desktopPane.getWidth(), desktopPane.getHeight()); // Asegura que el JPanel ocupe todo el espacio
+            form.setBounds(0, 0, desktopPane.getWidth(), desktopPane.getHeight());
         }
 
         // Muestra el formulario seleccionado
@@ -163,10 +127,11 @@ public class Main extends javax.swing.JFrame {
             }
         }
 
-        // Fuerza la actualización de la interfaz
+        // Actualiza el DesktopPane
         desktopPane.revalidate();
         desktopPane.repaint();
     }
+
 
 
     /**
