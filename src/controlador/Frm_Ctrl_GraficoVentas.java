@@ -35,12 +35,12 @@ public class Frm_Ctrl_GraficoVentas {
 
     private void init() {
         
-        vista.setSize(new Dimension(550, 650));
+        vista.setSize(new Dimension(700, 650));
         vista.setTitle("Historial de Ventas");
         vista.setVisible(true);
-        vista.setLocation(1000, 50);
+        vista.setLocation(750, 50);
 
-        FromMenu.desktopPane.add(vista); // Añadir al JDesktopPane
+ 
         vista.toFront();
         // Cargar clientes y productos en la vista desde el controlador
 

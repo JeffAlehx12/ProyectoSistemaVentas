@@ -1,6 +1,7 @@
 
 package controlador;
 
+import com.raven.main.Main;
 import conexion.Conexion;
 import java.awt.Dimension;
 import java.awt.event.KeyAdapter;
@@ -71,23 +72,11 @@ public class Frm_Ctrl_Login {
             String rolSeleccionado = obtenerRolUsuario(usuario);
 
             // Crear la ventana del menú y el controlador
-            FromMenu menu = new FromMenu();
-            FrmPrincipal_Ctrl_Menu ctrlMenu = new FrmPrincipal_Ctrl_Menu(menu);
+            Main menu = new Main();
+            
             menu.setVisible(true);
 
-            // Comparar el rol y habilitar/deshabilitar opciones en el menú
-            if (rolSeleccionado != null && rolSeleccionado.equalsIgnoreCase("Usuario")) {
-                // Deshabilitar ciertas opciones para el rol "Usuario"
-                menu.getjMenuItem_gestionar_usuarios().setEnabled(false);
-                menu.getjMenuItem_gestionar_producto().setEnabled(false);
-                menu.setTitle("Sistema de Venta - USUARIO");
-            } else if (rolSeleccionado != null && rolSeleccionado.equalsIgnoreCase("Admin")) {
-                // Habilitar todas las opciones para el rol "Admin"
-                menu.getjMenuItem_gestionar_usuarios().setEnabled(true);
-                menu.getjMenuItem_gestionar_producto().setEnabled(true);
-                menu.setTitle("Sistema de Venta - ADMIN");
-            }
-
+            
             // Cerrar la vista de inicio de sesión
             vista.dispose();
 

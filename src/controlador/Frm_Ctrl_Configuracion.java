@@ -34,8 +34,8 @@ public class Frm_Ctrl_Configuracion {
         vista.setSize(new Dimension(440, 307));
         vista.setTitle("Informacion de la Empresa");
         vista.setVisible(true);
-        vista.setLocation(750,50);
-        FromMenu.desktopPane.add(vista);
+        vista.setLocation(500,50);
+        
     
         vista.toFront();
         

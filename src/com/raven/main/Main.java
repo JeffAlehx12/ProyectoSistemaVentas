@@ -24,16 +24,21 @@ import java.util.Arrays;
 import javax.swing.JPanel;
 
 
+
 /**
  *
  * @author RAVEN
  */
 public class Main extends javax.swing.JFrame {
 
+    
+    
+    
      // Panel principal y DesktopPane
     public static JDesktopPane desktopPane;
 
     // InternalFrames
+    
     private Form_Hom home;
     private InterGestionarUsuario interGestionarUsuario;
     private InterGestionarProducto interGestionarProducto;
@@ -44,6 +49,9 @@ public class Main extends javax.swing.JFrame {
     private InterGestionarCliente interGestionarCliente;
     private InterFacturacion interFacturacion;
     private InterGestionarVentas interGestionarVentas;
+    private InterHistorialVentas interHistorialVentas;
+    private InterConfiguracion interConfiguracion;
+    
     
     // Controladores
     private Frm_Ctrl_GestionarUsuario ctrl_GestionarUsuario;
@@ -55,14 +63,18 @@ public class Main extends javax.swing.JFrame {
     private Frm_Ctrl_GestionarCliente ctrl_GestionarCliente;
     private Frm_Ctrl_RegistrarVenta ctrl_RegistrarVenta;
     private Frm_Ctrl_GestionarVentas ctrl_GestionarVentas;
-    private Reportes reportes;
+    private Frm_Ctrl_HistorialVentas ctrl_HistorialVentas;
+    private Frm_Ctrl_Configuracion ctrl_Configuracion;
     
+    private Reportes reportes;
+   
     
     
     
     public Main() {
         initComponents();
-
+        
+     
         // Crea un JDesktopPane personalizado
         desktopPane = new JDesktopPane() {
             private final Image backgroundImage = new ImageIcon(getClass().getResource("/com/raven/icon/desktop_Jpanel.png")).getImage();
@@ -105,6 +117,8 @@ public class Main extends javax.swing.JFrame {
         interGestionarCliente= new InterGestionarCliente();
         interFacturacion = new InterFacturacion();
         interGestionarVentas = new InterGestionarVentas();
+        interHistorialVentas = new InterHistorialVentas();
+        interConfiguracion = new InterConfiguracion();
         
         
         //Inicializa los controladores
@@ -117,8 +131,11 @@ public class Main extends javax.swing.JFrame {
         ctrl_GestionarCliente = new Frm_Ctrl_GestionarCliente(interGestionarCliente);
         ctrl_RegistrarVenta= new Frm_Ctrl_RegistrarVenta(interFacturacion);
         ctrl_GestionarVentas = new Frm_Ctrl_GestionarVentas(interGestionarVentas);
+        ctrl_HistorialVentas = new Frm_Ctrl_HistorialVentas(interHistorialVentas);
+        ctrl_Configuracion = new Frm_Ctrl_Configuracion(interConfiguracion);
+                
         this.reportes = new Reportes(); 
-        
+
         
         // Inicializa el menú
         menu.initMoving(Main.this);
@@ -175,7 +192,13 @@ public class Main extends javax.swing.JFrame {
                         break;    
                     case 20:
                         reportes.ReportesVentas();
-                        break;     
+                        break; 
+                    case 22:
+                        setForm(interHistorialVentas);
+                        break;   
+                    case 24:
+                        setForm(interConfiguracion);
+                        break;       
                 }
             }
         });
@@ -216,6 +239,10 @@ public class Main extends javax.swing.JFrame {
         // Actualiza el DesktopPane
         desktopPane.revalidate();
         desktopPane.repaint();
+    }
+
+   public void cerrarVentana() {
+       this.dispose();
     }
 
 

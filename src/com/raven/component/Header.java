@@ -1,5 +1,8 @@
 package com.raven.component;
 
+import com.raven.main.Main;
+import controlador.Frm_Ctrl_Configuracion;
+import controlador.Frm_Ctrl_Login;
 import java.awt.Color;
 import java.awt.Font;
 import java.awt.Graphics;
@@ -8,16 +11,36 @@ import java.awt.RenderingHints;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import javax.swing.BorderFactory;
+import javax.swing.JInternalFrame;
 import javax.swing.JMenuItem;
 import javax.swing.JOptionPane;
 import javax.swing.JPopupMenu;
+import vista.FromLogin;
+import vista.InterConfiguracion;
 
 public class Header extends javax.swing.JPanel {
 
+    Main vista;
+    
+    private InterConfiguracion interConfiguracion;
+    private Frm_Ctrl_Configuracion ctrl_Configuracion;
+    
+    
+    
     public Header() {
+        
         initComponents();
+        
+       
+        
         setOpaque(false);
+        
     }
+    
+  
+    
+    
+    
 
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
@@ -66,6 +89,9 @@ public class Header extends javax.swing.JPanel {
         );
     }// </editor-fold>//GEN-END:initComponents
 
+    
+    
+    
     private void jLabel2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel2MouseClicked
 // Crear un JPopupMenu estilizado
         JPopupMenu popupMenu = new JPopupMenu();
@@ -74,7 +100,7 @@ public class Header extends javax.swing.JPanel {
 
 // Crear las opciones del menú con estilos
         JMenuItem opcion1 = new JMenuItem("Configuración general");
-        JMenuItem opcion2 = new JMenuItem("Cambiar tema");
+        JMenuItem opcion2 = new JMenuItem("Información Empresa");
         JMenuItem opcion3 = new JMenuItem("Cerrar sesión");
 
 // Estilo para las opciones del menú
@@ -113,18 +139,38 @@ public class Header extends javax.swing.JPanel {
         });
 
         opcion2.addActionListener(e -> {
-            JOptionPane.showMessageDialog(null, "Abrir configuraciones de tema");
+            
+            // Cerrar todas las ventanas abiertas en el DesktopPane
+            for (JInternalFrame iframe : Main.desktopPane.getAllFrames()) {
+                iframe.dispose(); // Cierra y elimina la ventana interna
+            }
+
+            // Crear e agregar la ventana de configuración si no está abierta
+            interConfiguracion = new InterConfiguracion();
+            ctrl_Configuracion = new Frm_Ctrl_Configuracion(interConfiguracion);
+
+            Main.desktopPane.add(interConfiguracion);
+            interConfiguracion.setVisible(true);
         });
 
         opcion3.addActionListener(e -> {
-            int confirm = JOptionPane.showConfirmDialog(null,
-                    "¿Estás seguro de que deseas cerrar sesión?",
-                    "Confirmar salida", JOptionPane.YES_NO_OPTION);
+    
+            int respuesta = JOptionPane.showConfirmDialog(null, "¿Está seguro de que desea cerrar sesión?", "Confirmar cierre de sesión", JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE);
+            if (respuesta == JOptionPane.YES_OPTION) {
+                
+                vista = new Main();
+                // Llama al método cerrarVentana() de la instancia de Main
+                vista.dispose();
+                vista.setVisible(false);
 
-            if (confirm == JOptionPane.YES_OPTION) {
-                System.exit(0); // Cierra la aplicación
+                // Ahora abre el formulario de login
+                FromLogin fl = new FromLogin();
+                Frm_Ctrl_Login cl = new Frm_Ctrl_Login(fl);
+                fl.setVisible(true);
+                fl.setLocationRelativeTo(null);
             }
         });
+
 
 // Agregar las opciones al menú
         popupMenu.add(opcion1);

@@ -1,5 +1,6 @@
 package controlador;
 
+import com.raven.main.Main;
 import java.awt.Dimension;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -41,9 +42,9 @@ public class Frm_Ctrl_HistorialVentas {
         vista.setSize(new Dimension(567, 403));
         vista.setTitle("Historial de Ventas");
         vista.setVisible(true);
-        vista.setLocation(1000, 50);
+        vista.setLocation(200, 50);
         
-        FromMenu.desktopPane.add(vista); // Añadir al JDesktopPane
+        
         vista.toFront();
         // Cargar clientes y productos en la vista desde el controlador
        
@@ -84,11 +85,11 @@ public class Frm_Ctrl_HistorialVentas {
 
         // Mostrar la vista de gráfico de ventas
         InterGraficaVentas_prueba interGraficaVentas_prueba = new InterGraficaVentas_prueba();
-        FromMenu.desktopPane.add(interGraficaVentas_prueba);
+        Main.desktopPane.add(interGraficaVentas_prueba);
         interGraficaVentas_prueba.setVisible(true);
         interGraficaVentas_prueba.setTitle("Historial de Ventas");
         interGraficaVentas_prueba.setVisible(true);
-        interGraficaVentas_prueba.setLocation(750, 50);
+        interGraficaVentas_prueba.setLocation(850, 50);
     }
     
     
