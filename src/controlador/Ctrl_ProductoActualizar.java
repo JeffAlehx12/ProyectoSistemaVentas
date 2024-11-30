@@ -1,5 +1,6 @@
 package controlador;
 
+import com.raven.main.Main;
 import conexion.Conexion;
 import java.awt.Color;
 import java.awt.Dimension;
@@ -57,7 +58,8 @@ public class Ctrl_ProductoActualizar {
         vista.setVisible(true);  
         vista.setLocation(150, 40);
         
-        FromMenu.desktopPane.add(vista);
+        Main.desktopPane.add(vista);
+        
         vista.toFront();
         
         CargarComboCategorias();

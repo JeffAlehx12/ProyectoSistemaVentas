@@ -1,6 +1,7 @@
 package controlador;
 
 import com.itextpdf.text.log.Logger;
+import com.raven.main.Main;
 import conexion.Conexion;
 import java.awt.Color;
 import java.awt.Dimension;
@@ -55,7 +56,14 @@ public class Ctrl_Producto {
         vista.setVisible(true);  
         vista.setLocation(150, 40);
         
-        FromMenu.desktopPane.add(vista);
+        Main.desktopPane.add(vista);
+        
+        
+        
+        
+        
+        
+        
         vista.toFront();
         
         
@@ -240,7 +248,7 @@ public class Ctrl_Producto {
                     if (controladorProducto.guardar(producto, ruta, nombre)) {
                         JOptionPane.showMessageDialog(null, "Registro Guardado");
                         InterGestionarProducto interGestionarProducto = new InterGestionarProducto();
-                        Frm_Ctrl_GestionarProducto frm_Ctrl_GestionarProducto = new Frm_Ctrl_GestionarProducto(interGestionarProducto);
+                        Frm_Ctrl_GestionarProducto frm_Ctrl_GestionarProducto = new Frm_Ctrl_GestionarProducto(interGestionarProducto);                
                         vista.dispose();
                         Limpiar();
                     } else {

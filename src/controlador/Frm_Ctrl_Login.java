@@ -55,77 +55,102 @@ public class Frm_Ctrl_Login {
             }
         });
     }
-
-    
-
     private void jButton_IniciarSesionActionPerformed(java.awt.event.ActionEvent evt) {
-        
-        
-        if (!vista.txt_usuario.getText().isEmpty() && !vista.txt_password.getText().isEmpty()) {
-       
-            Usuario usuario = new Usuario();
-            usuario.setUsuario(vista.txt_usuario.getText().trim());
-            usuario.setPassword(vista.txt_password.getText().trim());
+    // Verificar si los campos de usuario y contraseña no están vacíos
+    if (!vista.txt_usuario.getText().isEmpty() && !vista.txt_password.getText().isEmpty()) {
 
-            if (loginUser(usuario)) {
-                
-                FromMenu menu = new FromMenu();
-                FrmPrincipal_Ctrl_Menu ctrlMenu = new FrmPrincipal_Ctrl_Menu(menu);
-                menu.setVisible(true);
+        // Crear el objeto Usuario con las credenciales ingresadas
+        Usuario usuario = new Usuario();
+        usuario.setUsuario(vista.txt_usuario.getText().trim());
+        usuario.setPassword(vista.txt_password.getText().trim());
 
+        // Verificar si las credenciales son correctas
+        if (loginUser(usuario)) {
 
-                // Obtener el rol del usuario desde la base de datos
-                String rolSeleccionado = obtenerRolUsuario(usuario);
+            // Obtener el rol del usuario desde la base de datos
+            String rolSeleccionado = obtenerRolUsuario(usuario);
 
-                // Comparar el valor seleccionado
-                if (rolSeleccionado != null && rolSeleccionado.equalsIgnoreCase("Usuario")) {
-                    // Lógica para el caso cuando el rol es "Usuario"
-                    // Aquí puedes deshabilitar el botón específico
-                    menu.getjMenuItem_gestionar_usuarios().setEnabled(false);
-                   
-                    menu.getjMenuItem_gestionar_producto().setEnabled(false); 
-                    
-                    menu.setTitle("Sistema de Venta - USUARIO");
-                    
-                } else if (rolSeleccionado != null && rolSeleccionado.equalsIgnoreCase("Admin")) {
-                    // Lógica para el caso cuando el rol es "Admin"
-                    // Habilitar los botones si es necesario
-                    menu.getjMenuItem_gestionar_usuarios().setEnabled(true);
-                    
-                    menu.setTitle("Sistema de Venta - ADMIN");
-                }
+            // Crear la ventana del menú y el controlador
+            FromMenu menu = new FromMenu();
+            FrmPrincipal_Ctrl_Menu ctrlMenu = new FrmPrincipal_Ctrl_Menu(menu);
+            menu.setVisible(true);
 
-                // Mostrar el menú
-                menu.setVisible(true);
-
-                // Cerrar la vista de inicio de sesión
-                vista.dispose();
-            } else {
-                JOptionPane.showMessageDialog(vista, "Usuario o Clave Incorrectos");
+            // Comparar el rol y habilitar/deshabilitar opciones en el menú
+            if (rolSeleccionado != null && rolSeleccionado.equalsIgnoreCase("Usuario")) {
+                // Deshabilitar ciertas opciones para el rol "Usuario"
+                menu.getjMenuItem_gestionar_usuarios().setEnabled(false);
+                menu.getjMenuItem_gestionar_producto().setEnabled(false);
+                menu.setTitle("Sistema de Venta - USUARIO");
+            } else if (rolSeleccionado != null && rolSeleccionado.equalsIgnoreCase("Admin")) {
+                // Habilitar todas las opciones para el rol "Admin"
+                menu.getjMenuItem_gestionar_usuarios().setEnabled(true);
+                menu.getjMenuItem_gestionar_producto().setEnabled(true);
+                menu.setTitle("Sistema de Venta - ADMIN");
             }
+
+            // Cerrar la vista de inicio de sesión
+            vista.dispose();
+
         } else {
-            JOptionPane.showMessageDialog(vista, "Ingrese sus credenciales");
+            JOptionPane.showMessageDialog(vista, "Usuario o Clave Incorrectos");
         }
+    } else {
+        JOptionPane.showMessageDialog(vista, "Ingrese sus credenciales");
     }
-    
+}
+
+
     
     public boolean loginUser(Usuario objeto) {
-        boolean respuesta = false;
-        Connection cn = Conexion.conectar();
-        String sql = "select  usuario, password from tb_usuario where usuario = '" + objeto.getUsuario() + "' and password = '" + objeto.getPassword() + "'";
-        Statement st;
-        try {
-            st = cn.createStatement();
-            ResultSet rs = st.executeQuery(sql);
-            while (rs.next()) {
-                respuesta = true;
+    boolean respuesta = false;
+    Connection cn = Conexion.conectar();
+    String sql = "SELECT idUsuario, usuario, password, nombre, apellido FROM tb_usuario WHERE usuario = ? AND password = ?";
+
+    try (PreparedStatement pst = cn.prepareStatement(sql)) {
+        pst.setString(1, objeto.getUsuario());
+        pst.setString(2, objeto.getPassword());
+
+        ResultSet rs = pst.executeQuery();
+        if (rs.next()) {
+            respuesta = true;
+
+            // Obtener los datos del usuario
+            int idUsuario = rs.getInt("idUsuario");
+            String nombreCompleto = rs.getString("nombre") + " " + rs.getString("apellido");
+
+            // Registrar la sesión del usuario en la tabla tb_sesion_usuario
+            String registrarSesionSQL = "INSERT INTO tb_sesion_usuario (idUsuario) VALUES (?)";
+            try (PreparedStatement pst2 = cn.prepareStatement(registrarSesionSQL)) {
+                pst2.setInt(1, idUsuario);  // Guardamos el idUsuario en la tabla de sesiones
+                pst2.executeUpdate();
+                System.out.println("Usuario logueado registrado correctamente en la tabla de sesiones.");
+            } catch (SQLException e) {
+                System.out.println("Error al registrar el usuario logueado en la tabla de sesiones: " + e.getMessage());
             }
-        } catch (SQLException e) {
-            System.out.println("Error al Iniciar Sesion");
-            JOptionPane.showMessageDialog(null, "Error al Iniciar Sesion");
+
+            // Opcionalmente, puedes devolver el nombre completo del usuario o cualquier otro dato
+            System.out.println("Usuario logueado: " + nombreCompleto);
         }
-        return respuesta;
+    } catch (SQLException e) {
+        System.out.println("Error al Iniciar Sesion");
+        JOptionPane.showMessageDialog(null, "Error al Iniciar Sesion");
     }
+    return respuesta;
+}
+   public void verificarUsuarioLogueado() {
+    Connection cn = Conexion.conectar();
+    String sql = "SELECT @usuario_logueado";
+
+    try (PreparedStatement pst = cn.prepareStatement(sql)) {
+        ResultSet rs = pst.executeQuery();
+        if (rs.next()) {
+            String usuarioLogueado = rs.getString(1);
+            System.out.println("Usuario Logueado: " + usuarioLogueado);
+        }
+    } catch (SQLException e) {
+        System.out.println("Error al verificar usuario logueado");
+    }
+}
     
 
    public String obtenerRolUsuario(Usuario objeto) {

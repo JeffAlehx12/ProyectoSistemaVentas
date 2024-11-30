@@ -1,6 +1,7 @@
 
 package controlador;
 
+import com.raven.main.Main;
 import conexion.*;
 import java.awt.Dimension;
 import java.awt.event.ActionEvent;
@@ -41,10 +42,13 @@ public class Frm_Ctrl_GestionarCategoria {
         vista.setSize(new Dimension(896, 507));
         vista.setTitle("Gestionar Categorias");
         vista.setVisible(true);
-        vista.setLocation(470, 45);
         
         
-        FromMenu.desktopPane.add(vista);
+        
+        
+        
+        Main.desktopPane.add(vista);
+        
         vista.toFront();
         
         CargarTablaCategorias();

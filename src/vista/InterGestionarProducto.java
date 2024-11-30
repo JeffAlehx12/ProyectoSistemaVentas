@@ -30,8 +30,6 @@ public class InterGestionarProducto extends javax.swing.JInternalFrame {
         jPanel1 = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
         jTable_productos = new javax.swing.JTable();
-        jLabel3 = new javax.swing.JLabel();
-        txt_cantidad = new javax.swing.JTextField();
         jbtnCategoria = new javax.swing.JButton();
         jbtnProducto = new javax.swing.JButton();
         jbtnActualizar = new javax.swing.JButton();
@@ -58,17 +56,7 @@ public class InterGestionarProducto extends javax.swing.JInternalFrame {
         ));
         jScrollPane1.setViewportView(jTable_productos);
 
-        jPanel1.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 120, 1320, 440));
-
-        jLabel3.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        jLabel3.setForeground(new java.awt.Color(0, 0, 0));
-        jLabel3.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
-        jLabel3.setText("Cantidad:");
-        jPanel1.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 570, 80, 30));
-
-        txt_cantidad.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
-        txt_cantidad.setEnabled(false);
-        jPanel1.add(txt_cantidad, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 570, 110, 30));
+        jPanel1.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 140, 1550, 440));
 
         jbtnCategoria.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/categorias.png"))); // NOI18N
         jbtnCategoria.setText("Categoria");
@@ -77,7 +65,7 @@ public class InterGestionarProducto extends javax.swing.JInternalFrame {
                 jbtnCategoriaActionPerformed(evt);
             }
         });
-        jPanel1.add(jbtnCategoria, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 80, 130, 30));
+        jPanel1.add(jbtnCategoria, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 90, 130, 30));
 
         jbtnProducto.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/nuevo-producto.png"))); // NOI18N
         jbtnProducto.setText("Agregar Producto");
@@ -86,7 +74,7 @@ public class InterGestionarProducto extends javax.swing.JInternalFrame {
                 jbtnProductoActionPerformed(evt);
             }
         });
-        jPanel1.add(jbtnProducto, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 80, 170, 30));
+        jPanel1.add(jbtnProducto, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 90, 170, 30));
 
         jbtnActualizar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/reporte1.png"))); // NOI18N
         jbtnActualizar.setText("Actualizar");
@@ -95,7 +83,7 @@ public class InterGestionarProducto extends javax.swing.JInternalFrame {
                 jbtnActualizarActionPerformed(evt);
             }
         });
-        jPanel1.add(jbtnActualizar, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 80, 140, 30));
+        jPanel1.add(jbtnActualizar, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 90, 140, 30));
 
         jPanel2.setBackground(new java.awt.Color(59, 130, 246));
         jPanel2.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -103,11 +91,11 @@ public class InterGestionarProducto extends javax.swing.JInternalFrame {
         jLabel1.setFont(new java.awt.Font("Segoe UI Black", 1, 22)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(255, 255, 255));
         jLabel1.setText("GESTIONAR PRODUCTO");
-        jPanel2.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 10, -1, 50));
+        jPanel2.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 0, -1, 50));
 
-        jPanel1.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(-10, 0, 1320, 70));
+        jPanel1.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(-10, 0, 1590, 50));
 
-        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1320, 650));
+        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1580, 840));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -129,7 +117,6 @@ public class InterGestionarProducto extends javax.swing.JInternalFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel3;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     public static javax.swing.JScrollPane jScrollPane1;
@@ -137,7 +124,6 @@ public class InterGestionarProducto extends javax.swing.JInternalFrame {
     public javax.swing.JButton jbtnActualizar;
     public javax.swing.JButton jbtnCategoria;
     public javax.swing.JButton jbtnProducto;
-    public javax.swing.JTextField txt_cantidad;
     // End of variables declaration//GEN-END:variables
 
 }

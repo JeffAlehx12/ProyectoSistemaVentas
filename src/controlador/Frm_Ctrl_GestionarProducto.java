@@ -1,6 +1,7 @@
 
 package controlador;
 
+import com.raven.main.Main;
 import conexion.*;
 import java.awt.Dimension;
 import java.awt.event.ActionEvent;
@@ -13,9 +14,12 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.sql.*;
 import javax.imageio.ImageIO;
+import javax.swing.BorderFactory;
 import javax.swing.ImageIcon;
+import javax.swing.JInternalFrame;
 import javax.swing.JOptionPane;
 import javax.swing.JTable;
+import javax.swing.plaf.basic.BasicInternalFrameUI;
 import javax.swing.table.DefaultTableModel;
 import vista.*;
 
@@ -46,16 +50,31 @@ public class Frm_Ctrl_GestionarProducto {
         
        
 
-        vista.setSize(new Dimension(1317, 651));
+        vista.setSize(new Dimension(1585, 870));
         vista.setTitle("Gestionar Productos");
         vista.setVisible(true);
-        vista.setLocation(170, 45);
-        FromMenu.desktopPane.add(vista);
+        vista.setLocation(0, 0);
+    
         
-        
-        
+        // Evitar que se pueda mover el JInternalFrame
+        vista.setResizable(false);  // Deshabilita el redimensionamiento
+        vista.setClosable(false);   // Deshabilita la opción de cerrar
+        vista.setMaximizable(false); // Deshabilita la opción de maximizar
+        vista.setIconifiable(false); // Deshabilita la opción de minimizar
+
+        Main.desktopPane.add(vista);
+        // Eliminar la barra de título y los botones de control (Cerrar, Minimizar, Maximizar)
+        JInternalFrame jif = vista;
+        ((BasicInternalFrameUI) jif.getUI()).setNorthPane(null); // Quita la barra de título
+
+// Quitar el borde adicional alrededor del contenido
+        jif.setBorder(BorderFactory.createEmptyBorder());  // Elimina el borde de todo el JInternalFrame
+
+// Fuerza a que se dibuje correctamente el contenido
+        jif.revalidate();
+        jif.repaint();
+
         vista.toFront();
-        
         CargarTablaProductos();
        
         
@@ -321,7 +340,7 @@ public class Frm_Ctrl_GestionarProducto {
 
   
   //   Metodo que envia datos seleccionados
-    
+   /* 
     private void EnviarStockSeleccionado(int idProducto) {
         try {
             Connection cn = Conexion.conectar();
@@ -340,7 +359,7 @@ public class Frm_Ctrl_GestionarProducto {
             System.out.println("Error al seleccionar producto: " + e);
         }
     }
-
+*/
    
    
 }

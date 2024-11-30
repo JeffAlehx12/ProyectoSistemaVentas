@@ -1,6 +1,7 @@
 
 package controlador;
 
+import com.raven.main.Main;
 import conexion.*;
 import java.awt.Dimension;
 import java.sql.*;
@@ -40,7 +41,7 @@ public class Frm_Ctrl_GestionarProveedores {
         vista.setTitle("Gestionar Proveedo");
         vista.setVisible(true);
         vista.setLocation(40, 45);
-        FromMenu.desktopPane.add(vista);
+        Main.desktopPane.add(vista);
         
         
         vista.toFront();
