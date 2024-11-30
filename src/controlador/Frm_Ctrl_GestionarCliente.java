@@ -8,8 +8,11 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import javax.swing.BorderFactory;
+import javax.swing.JInternalFrame;
 import javax.swing.JOptionPane;
 import javax.swing.JTable;
+import javax.swing.plaf.basic.BasicInternalFrameUI;
 import javax.swing.table.DefaultTableModel;
 import modelo.Cliente;
 import vista.FromMenu;
@@ -39,11 +42,27 @@ public class Frm_Ctrl_GestionarCliente {
     private void init() {
         
         
-        vista.setSize(new Dimension(1420, 580));
+        vista.setSize(new Dimension(1580, 880));
         vista.setTitle("Gestionar Cliente");
         vista.setVisible(true);
-        vista.setLocation(20, 45);
-        FromMenu.desktopPane.add(vista);
+        vista.setLocation(0,0);
+        
+         // Evitar que se pueda mover el JInternalFrame
+        vista.setResizable(false);  // Deshabilita el redimensionamiento
+        vista.setClosable(false);   // Deshabilita la opción de cerrar
+        vista.setMaximizable(false); // Deshabilita la opción de maximizar
+        vista.setIconifiable(false); // Deshabilita la opción de minimizar
+
+        // Eliminar la barra de título y los botones de control (Cerrar, Minimizar, Maximizar)
+        JInternalFrame jif = vista;
+        ((BasicInternalFrameUI) jif.getUI()).setNorthPane(null); // Quita la barra de título
+
+// Quitar el borde adicional alrededor del contenido
+        jif.setBorder(BorderFactory.createEmptyBorder());  // Elimina el borde de todo el JInternalFrame
+
+// Fuerza a que se dibuje correctamente el contenido
+        jif.revalidate();
+        jif.repaint();
         
         vista.toFront();
         

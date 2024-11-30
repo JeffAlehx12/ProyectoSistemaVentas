@@ -91,7 +91,7 @@ public class InterGestionarProducto extends javax.swing.JInternalFrame {
         jPanel2.setBackground(new java.awt.Color(59, 130, 246));
         jPanel2.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jLabel1.setFont(new java.awt.Font("SansSerif", 1, 19)); // NOI18N
+        jLabel1.setFont(new java.awt.Font("Segoe UI Black", 1, 19)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(255, 255, 255));
         jLabel1.setText("GESTIONAR PRODUCTO");
         jPanel2.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 0, -1, 50));

@@ -28,11 +28,14 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
 import javax.imageio.ImageIO;
+import javax.swing.BorderFactory;
 import javax.swing.ImageIcon;
 import javax.swing.JFileChooser;
+import javax.swing.JInternalFrame;
 import javax.swing.JOptionPane;
 import javax.swing.JTable;
 import javax.swing.JTextField;
+import javax.swing.plaf.basic.BasicInternalFrameUI;
 import javax.swing.table.DefaultTableModel;
 import modelo.Imagen;
 import modelo.Producto;
@@ -62,14 +65,30 @@ public class Frm_Ctrl_Entrada {
         
         
         vista.setTitle("Registro de Entradas");
-        vista.setSize(new Dimension(1389, 714));
-        vista.setLocation(400,20);
+        vista.setSize(new Dimension(1580, 850));
+        vista.setLocation(0,0);
         vista.setVisible(true);
         
         cargarIdEntrada();
         CargarTablaEntradas(vista.jtblEntrada);
         
-        FromMenu.desktopPane.add(vista);
+        // Evitar que se pueda mover el JInternalFrame
+        vista.setResizable(false);  // Deshabilita el redimensionamiento
+        vista.setClosable(false);   // Deshabilita la opción de cerrar
+        vista.setMaximizable(false); // Deshabilita la opción de maximizar
+        vista.setIconifiable(false); // Deshabilita la opción de minimizar
+
+        // Eliminar la barra de título y los botones de control (Cerrar, Minimizar, Maximizar)
+        JInternalFrame jif = vista;
+        ((BasicInternalFrameUI) jif.getUI()).setNorthPane(null); // Quita la barra de título
+
+        // Quitar el borde adicional alrededor del contenido
+        jif.setBorder(BorderFactory.createEmptyBorder());  // Elimina el borde de todo el JInternalFrame
+
+        // Fuerza a que se dibuje correctamente el contenido
+        jif.revalidate();
+        jif.repaint();
+        
         vista.toFront();
         
         

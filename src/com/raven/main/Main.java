@@ -37,11 +37,29 @@ public class Main extends javax.swing.JFrame {
     private Form_Hom home;
     private InterGestionarUsuario interGestionarUsuario;
     private InterGestionarProducto interGestionarProducto;
-
+    private InterEntradas interEntradas;
+    private InterSalidas interSalidas;
+    private InterInventario interInventario;
+    private InterGestionarProveedor interGestionarProveedor;
+    private InterGestionarCliente interGestionarCliente;
+    private InterFacturacion interFacturacion;
+    private InterGestionarVentas interGestionarVentas;
+    
     // Controladores
     private Frm_Ctrl_GestionarUsuario ctrl_GestionarUsuario;
     private Frm_Ctrl_GestionarProducto ctrl_GestionarProducto;
-
+    private Frm_Ctrl_Entrada ctrl_Entrada;
+    private Frm_Ctrl_Salida ctrl_Salida;
+    private Frm_Ctrl_Inventario ctrl_Inventario;
+    private Frm_Ctrl_GestionarProveedores ctrl_GestionarProveedores;
+    private Frm_Ctrl_GestionarCliente ctrl_GestionarCliente;
+    private Frm_Ctrl_RegistrarVenta ctrl_RegistrarVenta;
+    private Frm_Ctrl_GestionarVentas ctrl_GestionarVentas;
+    private Reportes reportes;
+    
+    
+    
+    
     public Main() {
         initComponents();
 
@@ -64,17 +82,44 @@ public class Main extends javax.swing.JFrame {
         mainPanel.setLayout(new BorderLayout());
         mainPanel.add(desktopPane, BorderLayout.CENTER);
 
+        
+        
+        
+        
         // Configura tamaño de la ventana principal
         setSize(new Dimension(1800, 900));
         setLocationRelativeTo(null);
 
-        // Inicializa los formularios y controladores
+        
+        
+        
+        
+        // Inicializa los formularios
         home = new Form_Hom();
         interGestionarUsuario = new InterGestionarUsuario();
         interGestionarProducto = new InterGestionarProducto();
+        interEntradas = new InterEntradas();
+        interSalidas = new InterSalidas();
+        interInventario = new InterInventario();
+        interGestionarProveedor= new InterGestionarProveedor();
+        interGestionarCliente= new InterGestionarCliente();
+        interFacturacion = new InterFacturacion();
+        interGestionarVentas = new InterGestionarVentas();
+        
+        
+        //Inicializa los controladores
         ctrl_GestionarUsuario = new Frm_Ctrl_GestionarUsuario(interGestionarUsuario);
         ctrl_GestionarProducto = new Frm_Ctrl_GestionarProducto(interGestionarProducto);
-
+        ctrl_Entrada = new Frm_Ctrl_Entrada(interEntradas);
+        ctrl_Salida = new Frm_Ctrl_Salida(interSalidas);
+        ctrl_Inventario = new Frm_Ctrl_Inventario(interInventario);
+        ctrl_GestionarProveedores = new Frm_Ctrl_GestionarProveedores(interGestionarProveedor);
+        ctrl_GestionarCliente = new Frm_Ctrl_GestionarCliente(interGestionarCliente);
+        ctrl_RegistrarVenta= new Frm_Ctrl_RegistrarVenta(interFacturacion);
+        ctrl_GestionarVentas = new Frm_Ctrl_GestionarVentas(interGestionarVentas);
+        this.reportes = new Reportes(); 
+        
+        
         // Inicializa el menú
         menu.initMoving(Main.this);
         menu.addEventMenuSelected(new EventMenuSelected() {
@@ -88,8 +133,49 @@ public class Main extends javax.swing.JFrame {
                         setForm(interGestionarUsuario);
                         break;
                     case 4:
+                        interGestionarProducto = new InterGestionarProducto();
+                        ctrl_GestionarProducto = new Frm_Ctrl_GestionarProducto(interGestionarProducto);
                         setForm(interGestionarProducto);
                         break;
+                    case 6:
+                        setForm(interEntradas);
+                        break; 
+                    case 7:
+                        interSalidas = new InterSalidas();
+                        ctrl_Salida = new Frm_Ctrl_Salida(interSalidas);
+                        setForm(interSalidas);
+                        break;  
+                    case 8:
+                        interInventario = new InterInventario();
+                        ctrl_Inventario = new Frm_Ctrl_Inventario(interInventario);
+                        setForm(interInventario);
+                        break;
+                    case 10:
+                        setForm(interGestionarProveedor);
+                        break;
+                    case 12:
+                        setForm(interGestionarCliente);
+                        break;
+                    case 14:
+                        setForm(interFacturacion);
+                        break;
+                    case 15:
+                        interGestionarVentas = new InterGestionarVentas();
+                        ctrl_GestionarVentas = new Frm_Ctrl_GestionarVentas(interGestionarVentas);
+                        setForm(interGestionarVentas);
+                        break;
+                    case 17:
+                        reportes.ReportesClientes();
+                        break;
+                    case 18:
+                        reportes.ReportesCategorias();
+                        break;    
+                    case 19:
+                        reportes.ReportesProductos();
+                        break;    
+                    case 20:
+                        reportes.ReportesVentas();
+                        break;     
                 }
             }
         });

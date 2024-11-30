@@ -41,15 +41,15 @@ public class InterGestionarCliente extends javax.swing.JInternalFrame {
         jtxtNombre = new javax.swing.JTextField();
         jLabel5 = new javax.swing.JLabel();
         jtxtCorreo = new javax.swing.JTextField();
-        jButton_eliminar = new javax.swing.JButton();
         jComboBox_estado = new javax.swing.JComboBox<>();
         jLabel10 = new javax.swing.JLabel();
-        jButton_Guardar = new javax.swing.JButton();
-        jButton_editar = new javax.swing.JButton();
-        jButton_Cancelar = new javax.swing.JButton();
         jtxtBusqueda = new javax.swing.JTextField();
         jbtnBuscarporDni = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
+        jButton_editar = new javax.swing.JButton();
+        jButton_Guardar = new javax.swing.JButton();
+        jButton_eliminar = new javax.swing.JButton();
+        jButton_Cancelar = new javax.swing.JButton();
         jPanel4 = new javax.swing.JPanel();
         jLabel9 = new javax.swing.JLabel();
 
@@ -75,71 +75,61 @@ public class InterGestionarCliente extends javax.swing.JInternalFrame {
         ));
         jScrollPane1.setViewportView(jTable_cliente);
 
-        jPanel1.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 50, 1040, 390));
+        jPanel1.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 60, 1520, 420));
 
         jLabel4.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         jLabel4.setForeground(new java.awt.Color(0, 0, 0));
         jLabel4.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         jLabel4.setText("Dni:");
-        jPanel1.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(1090, 110, 100, 20));
+        jPanel1.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 620, 100, 20));
 
         jtxtIdentificacion.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
-        jPanel1.add(jtxtIdentificacion, new org.netbeans.lib.awtextra.AbsoluteConstraints(1210, 110, 170, -1));
+        jPanel1.add(jtxtIdentificacion, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 620, 170, -1));
 
         jLabel3.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         jLabel3.setForeground(new java.awt.Color(0, 0, 0));
         jLabel3.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         jLabel3.setText("Teléfono:");
-        jPanel1.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(1100, 170, 90, -1));
+        jPanel1.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 560, 90, -1));
 
         jtxtTelefono.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
-        jPanel1.add(jtxtTelefono, new org.netbeans.lib.awtextra.AbsoluteConstraints(1210, 170, 170, -1));
+        jPanel1.add(jtxtTelefono, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 560, 170, -1));
 
         jLabel8.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         jLabel8.setForeground(new java.awt.Color(0, 0, 0));
         jLabel8.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         jLabel8.setText("Apellido:");
-        jPanel1.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(1090, 80, 100, -1));
+        jPanel1.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 590, 100, -1));
 
         jtxtApellido.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
-        jPanel1.add(jtxtApellido, new org.netbeans.lib.awtextra.AbsoluteConstraints(1210, 80, 170, -1));
+        jPanel1.add(jtxtApellido, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 590, 170, -1));
 
         jtxtDireccion.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
-        jPanel1.add(jtxtDireccion, new org.netbeans.lib.awtextra.AbsoluteConstraints(1210, 140, 170, -1));
+        jPanel1.add(jtxtDireccion, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 650, 170, -1));
 
         jLabel6.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         jLabel6.setForeground(new java.awt.Color(0, 0, 0));
         jLabel6.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         jLabel6.setText("Direccion:");
-        jPanel1.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(1100, 140, 90, -1));
+        jPanel1.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 650, 90, -1));
 
         jLabel2.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         jLabel2.setForeground(new java.awt.Color(0, 0, 0));
         jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         jLabel2.setText("Nombre: ");
-        jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(1090, 50, 110, -1));
+        jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 560, 110, -1));
 
         jtxtNombre.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
-        jPanel1.add(jtxtNombre, new org.netbeans.lib.awtextra.AbsoluteConstraints(1210, 50, 170, -1));
+        jPanel1.add(jtxtNombre, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 560, 170, -1));
 
         jLabel5.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         jLabel5.setForeground(new java.awt.Color(0, 0, 0));
         jLabel5.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         jLabel5.setText("Estado:");
-        jPanel1.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(1100, 230, 90, 20));
+        jPanel1.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 620, 90, 20));
 
         jtxtCorreo.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
-        jPanel1.add(jtxtCorreo, new org.netbeans.lib.awtextra.AbsoluteConstraints(1210, 200, 170, -1));
-
-        jButton_eliminar.setBackground(new java.awt.Color(255, 51, 51));
-        jButton_eliminar.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
-        jButton_eliminar.setText("Eliminar");
-        jButton_eliminar.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton_eliminarActionPerformed(evt);
-            }
-        });
-        jPanel1.add(jButton_eliminar, new org.netbeans.lib.awtextra.AbsoluteConstraints(1130, 320, 100, 30));
+        jPanel1.add(jtxtCorreo, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 590, 170, -1));
 
         jComboBox_estado.setBackground(new java.awt.Color(255, 255, 255));
         jComboBox_estado.setForeground(new java.awt.Color(0, 0, 0));
@@ -149,43 +139,13 @@ public class InterGestionarCliente extends javax.swing.JInternalFrame {
                 jComboBox_estadoActionPerformed(evt);
             }
         });
-        jPanel1.add(jComboBox_estado, new org.netbeans.lib.awtextra.AbsoluteConstraints(1210, 230, 170, -1));
+        jPanel1.add(jComboBox_estado, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 620, 170, -1));
 
         jLabel10.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         jLabel10.setForeground(new java.awt.Color(0, 0, 0));
         jLabel10.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         jLabel10.setText("Correo:");
-        jPanel1.add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(1100, 200, 90, -1));
-
-        jButton_Guardar.setBackground(new java.awt.Color(0, 204, 204));
-        jButton_Guardar.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        jButton_Guardar.setText("Guardar");
-        jButton_Guardar.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton_GuardarActionPerformed(evt);
-            }
-        });
-        jPanel1.add(jButton_Guardar, new org.netbeans.lib.awtextra.AbsoluteConstraints(1250, 280, 120, 30));
-
-        jButton_editar.setBackground(new java.awt.Color(51, 204, 0));
-        jButton_editar.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
-        jButton_editar.setText("Editar");
-        jButton_editar.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton_editarActionPerformed(evt);
-            }
-        });
-        jPanel1.add(jButton_editar, new org.netbeans.lib.awtextra.AbsoluteConstraints(1130, 280, 100, 30));
-
-        jButton_Cancelar.setBackground(new java.awt.Color(255, 51, 51));
-        jButton_Cancelar.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        jButton_Cancelar.setText("Cancelar");
-        jButton_Cancelar.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton_CancelarActionPerformed(evt);
-            }
-        });
-        jPanel1.add(jButton_Cancelar, new org.netbeans.lib.awtextra.AbsoluteConstraints(1250, 320, 120, 30));
+        jPanel1.add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 590, 90, -1));
 
         jtxtBusqueda.addCaretListener(new javax.swing.event.CaretListener() {
             public void caretUpdate(javax.swing.event.CaretEvent evt) {
@@ -210,45 +170,64 @@ public class InterGestionarCliente extends javax.swing.JInternalFrame {
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/usuario.png"))); // NOI18N
         jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 10, 20, 30));
 
-        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 50, 1410, 500));
+        jButton_editar.setBackground(new java.awt.Color(0, 153, 204));
+        jButton_editar.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        jButton_editar.setText("Editar");
+        jButton_editar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton_editarActionPerformed(evt);
+            }
+        });
+        jPanel1.add(jButton_editar, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 490, 130, 40));
 
-        jPanel4.setBackground(new java.awt.Color(0, 102, 102));
+        jButton_Guardar.setBackground(new java.awt.Color(0, 153, 204));
+        jButton_Guardar.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        jButton_Guardar.setText("Guardar");
+        jButton_Guardar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton_GuardarActionPerformed(evt);
+            }
+        });
+        jPanel1.add(jButton_Guardar, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 490, 130, 40));
+
+        jButton_eliminar.setBackground(new java.awt.Color(0, 153, 204));
+        jButton_eliminar.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        jButton_eliminar.setText("Eliminar");
+        jButton_eliminar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton_eliminarActionPerformed(evt);
+            }
+        });
+        jPanel1.add(jButton_eliminar, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 490, 120, 40));
+
+        jButton_Cancelar.setBackground(new java.awt.Color(0, 153, 204));
+        jButton_Cancelar.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        jButton_Cancelar.setText("Cancelar");
+        jButton_Cancelar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton_CancelarActionPerformed(evt);
+            }
+        });
+        jPanel1.add(jButton_Cancelar, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 490, 130, 40));
+
+        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 50, 1580, 800));
+
+        jPanel4.setBackground(new java.awt.Color(0, 153, 204));
         jPanel4.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jLabel9.setFont(new java.awt.Font("Segoe UI Black", 1, 22)); // NOI18N
+        jLabel9.setFont(new java.awt.Font("Segoe UI Black", 1, 19)); // NOI18N
         jLabel9.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel9.setText("REGISTRO DE CLIENTE");
+        jLabel9.setText("GESTIONAR CLIENTE");
         jPanel4.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 0, -1, 50));
 
-        getContentPane().add(jPanel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(-10, 0, 1420, 50));
+        getContentPane().add(jPanel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(-10, 0, 1580, 50));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jButton_eliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton_eliminarActionPerformed
-
-       
-
-    }//GEN-LAST:event_jButton_eliminarActionPerformed
-
-    private void jButton_editarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton_editarActionPerformed
-        
-       
-        
-        
-    }//GEN-LAST:event_jButton_editarActionPerformed
-
     private void jComboBox_estadoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox_estadoActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jComboBox_estadoActionPerformed
-
-    private void jButton_GuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton_GuardarActionPerformed
-
-    }//GEN-LAST:event_jButton_GuardarActionPerformed
-
-    private void jButton_CancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton_CancelarActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jButton_CancelarActionPerformed
 
     private void jtxtBusquedaCaretUpdate(javax.swing.event.CaretEvent evt) {//GEN-FIRST:event_jtxtBusquedaCaretUpdate
      
@@ -264,6 +243,22 @@ public class InterGestionarCliente extends javax.swing.JInternalFrame {
     private void jtxtBusquedaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jtxtBusquedaActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jtxtBusquedaActionPerformed
+
+    private void jButton_editarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton_editarActionPerformed
+
+    }//GEN-LAST:event_jButton_editarActionPerformed
+
+    private void jButton_GuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton_GuardarActionPerformed
+
+    }//GEN-LAST:event_jButton_GuardarActionPerformed
+
+    private void jButton_eliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton_eliminarActionPerformed
+
+    }//GEN-LAST:event_jButton_eliminarActionPerformed
+
+    private void jButton_CancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton_CancelarActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jButton_CancelarActionPerformed
 
     
     // Variables declaration - do not modify//GEN-BEGIN:variables

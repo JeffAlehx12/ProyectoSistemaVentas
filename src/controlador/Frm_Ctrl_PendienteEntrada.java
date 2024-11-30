@@ -1,5 +1,6 @@
 package controlador;
 
+import com.raven.main.Main;
 import conexion.Conexion;
 import java.awt.Color;
 import java.awt.Component;
@@ -50,7 +51,7 @@ public class Frm_Ctrl_PendienteEntrada {
         vista.setLocation(300, 80);
         vista.setVisible(true);
 
-        FromMenu.desktopPane.add(vista);
+        Main.desktopPane.add(vista);
         vista.toFront();
 
         vista.jbtnConfirmar.addActionListener(e -> jbtnConfirmarActionPerformed(e));

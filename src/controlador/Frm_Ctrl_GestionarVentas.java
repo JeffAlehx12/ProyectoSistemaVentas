@@ -9,10 +9,13 @@ import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import static java.awt.image.ImageObserver.WIDTH;
 import java.sql.*;
+import javax.swing.BorderFactory;
 import javax.swing.Icon;
 import javax.swing.ImageIcon;
+import javax.swing.JInternalFrame;
 import javax.swing.JOptionPane;
 import javax.swing.JTable;
+import javax.swing.plaf.basic.BasicInternalFrameUI;
 import javax.swing.table.DefaultTableModel;
 import modelo.CabeceraVenta;
 import vista.FromMenu;
@@ -46,18 +49,35 @@ public class Frm_Ctrl_GestionarVentas {
       
         
 //Cargar tabla
-        vista.setSize(new Dimension(900, 500));
+        vista.setSize(new Dimension(1580, 850));
         vista.setTitle("Gestionar Ventas");
         vista.setVisible(true);
-        vista.setLocation(750, 50);
+        vista.setLocation(0, 0);
         vista.repaint();
-        FromMenu.desktopPane.add(vista);
+        
+         // Evitar que se pueda mover el JInternalFrame
+        vista.setResizable(false);  // Deshabilita el redimensionamiento
+        vista.setClosable(false);   // Deshabilita la opción de cerrar
+        vista.setMaximizable(false); // Deshabilita la opción de maximizar
+        vista.setIconifiable(false); // Deshabilita la opción de minimizar
+
+        // Eliminar la barra de título y los botones de control (Cerrar, Minimizar, Maximizar)
+        JInternalFrame jif = vista;
+        ((BasicInternalFrameUI) jif.getUI()).setNorthPane(null); // Quita la barra de título
+
+// Quitar el borde adicional alrededor del contenido
+        jif.setBorder(BorderFactory.createEmptyBorder());  // Elimina el borde de todo el JInternalFrame
+
+// Fuerza a que se dibuje correctamente el contenido
+        jif.revalidate();
+        jif.repaint();
+        
         vista.toFront();
 
         //insertar imagen en nuestro JLabel
         ImageIcon wallpaper = new ImageIcon("src/img/fondo3.jpg");
         Icon icono = new ImageIcon(wallpaper.getImage().getScaledInstance(900, 500, WIDTH));
-        vista.jLabel_wallpaper.setIcon(icono);
+        
         
       
 

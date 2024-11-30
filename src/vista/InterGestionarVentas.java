@@ -45,14 +45,14 @@ public class InterGestionarVentas extends javax.swing.JInternalFrame {
         txt_fecha = new javax.swing.JTextField();
         jComboBox_cliente = new javax.swing.JComboBox<>();
         jComboBox_estado = new javax.swing.JComboBox<>();
-        jLabel_wallpaper = new javax.swing.JLabel();
+        jPanel4 = new javax.swing.JPanel();
 
         setClosable(true);
         setIconifiable(true);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel1.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
-        jLabel1.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel1.setForeground(new java.awt.Color(0, 0, 0));
         jLabel1.setText("Administrar Ventas");
         getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 20, -1, -1));
 
@@ -134,7 +134,9 @@ public class InterGestionarVentas extends javax.swing.JInternalFrame {
         jPanel3.add(jComboBox_estado, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 40, 170, -1));
 
         getContentPane().add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 330, 870, 100));
-        getContentPane().add(jLabel_wallpaper, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 890, 470));
+
+        jPanel4.setBackground(new java.awt.Color(255, 255, 255));
+        getContentPane().add(jPanel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(-10, -50, 1580, 870));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -154,10 +156,10 @@ public class InterGestionarVentas extends javax.swing.JInternalFrame {
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
-    public static javax.swing.JLabel jLabel_wallpaper;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
+    private javax.swing.JPanel jPanel4;
     public static javax.swing.JScrollPane jScrollPane1;
     public static javax.swing.JTable jTable_ventas;
     public javax.swing.JTextField txt_fecha;
