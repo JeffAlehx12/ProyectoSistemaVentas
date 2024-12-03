@@ -8,6 +8,7 @@ public class Proveedor {
     private String identificacion;
     private String nombre;
     private String apellido;
+    private String productos;
     private String direccion;
     private String telefono;
     private String correo;
@@ -20,6 +21,7 @@ public class Proveedor {
         this.identificacion = "";
         this.nombre = "";
         this.apellido = "";
+        this.productos = "";
         this.direccion = "";
         this.telefono = "";
         this.correo = "";
@@ -28,12 +30,13 @@ public class Proveedor {
         
     }
 
-    public Proveedor(int idProveedor, String razonSocial, String identificacion, String nombre, String apellido, String direccion, String telefono, String correo, int estado) {
+    public Proveedor(int idProveedor, String razonSocial, String identificacion, String nombre, String apellido, String productos, String direccion, String telefono, String correo, int estado) {
         this.idProveedor = idProveedor;
         this.razonSocial = razonSocial;
         this.identificacion = identificacion;
         this.nombre = nombre;
         this.apellido = apellido;
+        this.productos = productos;
         this.direccion = direccion;
         this.telefono = telefono;
         this.correo = correo;
@@ -79,6 +82,16 @@ public class Proveedor {
     public void setApellido(String apellido) {
         this.apellido = apellido;
     }
+
+    public String getProductos() {
+        return productos;
+    }
+
+    public void setProductos(String productos) {
+        this.productos = productos;
+    }
+    
+    
 
     public String getDireccion() {
         return direccion;

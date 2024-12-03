@@ -52,6 +52,8 @@ public class InterGestionarProveedor extends javax.swing.JInternalFrame {
         jButton_Guardar = new javax.swing.JButton();
         jButton_eliminar = new javax.swing.JButton();
         jButton_Cancelar = new javax.swing.JButton();
+        jLabel11 = new javax.swing.JLabel();
+        jtxtProductos = new javax.swing.JTextField();
         jPanel4 = new javax.swing.JPanel();
         jLabel9 = new javax.swing.JLabel();
 
@@ -86,19 +88,19 @@ public class InterGestionarProveedor extends javax.swing.JInternalFrame {
         jPanel1.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 590, 90, -1));
 
         jtxtIdentificacion.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
-        jPanel1.add(jtxtIdentificacion, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 590, 170, -1));
+        jPanel1.add(jtxtIdentificacion, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 590, 290, -1));
 
         jLabel3.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         jLabel3.setForeground(new java.awt.Color(0, 0, 0));
         jLabel3.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         jLabel3.setText("Teléfono:");
-        jPanel1.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 590, 90, -1));
+        jPanel1.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 620, 90, -1));
 
         jtxtTelefono.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
-        jPanel1.add(jtxtTelefono, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 590, 170, -1));
+        jPanel1.add(jtxtTelefono, new org.netbeans.lib.awtextra.AbsoluteConstraints(590, 620, 280, -1));
 
         jtxtRazonSocial.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
-        jPanel1.add(jtxtRazonSocial, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 560, 170, -1));
+        jPanel1.add(jtxtRazonSocial, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 560, 290, -1));
 
         jLabel7.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         jLabel7.setForeground(new java.awt.Color(0, 0, 0));
@@ -113,16 +115,16 @@ public class InterGestionarProveedor extends javax.swing.JInternalFrame {
         jPanel1.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 650, 90, -1));
 
         jtxtApellido.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
-        jPanel1.add(jtxtApellido, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 650, 170, -1));
+        jPanel1.add(jtxtApellido, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 650, 290, -1));
 
         jtxtDireccion.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
-        jPanel1.add(jtxtDireccion, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 560, 170, -1));
+        jPanel1.add(jtxtDireccion, new org.netbeans.lib.awtextra.AbsoluteConstraints(590, 590, 280, -1));
 
         jLabel6.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         jLabel6.setForeground(new java.awt.Color(0, 0, 0));
         jLabel6.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
-        jLabel6.setText("Direccion:");
-        jPanel1.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 560, 90, -1));
+        jLabel6.setText("Productos");
+        jPanel1.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 560, 130, -1));
 
         jLabel2.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         jLabel2.setForeground(new java.awt.Color(0, 0, 0));
@@ -131,16 +133,16 @@ public class InterGestionarProveedor extends javax.swing.JInternalFrame {
         jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 620, 130, 20));
 
         jtxtNombre.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
-        jPanel1.add(jtxtNombre, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 620, 170, -1));
+        jPanel1.add(jtxtNombre, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 620, 290, -1));
 
         jLabel5.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         jLabel5.setForeground(new java.awt.Color(0, 0, 0));
         jLabel5.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         jLabel5.setText("Estado:");
-        jPanel1.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 650, 90, -1));
+        jPanel1.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 680, 90, -1));
 
         jtxtCorreo.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
-        jPanel1.add(jtxtCorreo, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 620, 170, -1));
+        jPanel1.add(jtxtCorreo, new org.netbeans.lib.awtextra.AbsoluteConstraints(590, 650, 280, -1));
 
         jComboBox_estado.setBackground(new java.awt.Color(255, 255, 255));
         jComboBox_estado.setForeground(new java.awt.Color(0, 0, 0));
@@ -150,13 +152,13 @@ public class InterGestionarProveedor extends javax.swing.JInternalFrame {
                 jComboBox_estadoActionPerformed(evt);
             }
         });
-        jPanel1.add(jComboBox_estado, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 650, 170, -1));
+        jPanel1.add(jComboBox_estado, new org.netbeans.lib.awtextra.AbsoluteConstraints(590, 680, 280, -1));
 
         jLabel10.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         jLabel10.setForeground(new java.awt.Color(0, 0, 0));
         jLabel10.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         jLabel10.setText("Correo:");
-        jPanel1.add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 620, 90, -1));
+        jPanel1.add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 650, 90, -1));
 
         jtxtBusqueda.addCaretListener(new javax.swing.event.CaretListener() {
             public void caretUpdate(javax.swing.event.CaretEvent evt) {
@@ -221,6 +223,13 @@ public class InterGestionarProveedor extends javax.swing.JInternalFrame {
         });
         jPanel1.add(jButton_Cancelar, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 490, 130, 40));
 
+        jLabel11.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        jLabel11.setForeground(new java.awt.Color(0, 0, 0));
+        jLabel11.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
+        jLabel11.setText("Direccion:");
+        jPanel1.add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 590, 90, -1));
+        jPanel1.add(jtxtProductos, new org.netbeans.lib.awtextra.AbsoluteConstraints(590, 560, 280, -1));
+
         getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 50, 1580, 800));
 
         jPanel4.setBackground(new java.awt.Color(0, 153, 204));
@@ -280,6 +289,7 @@ public class InterGestionarProveedor extends javax.swing.JInternalFrame {
     public javax.swing.JComboBox<String> jComboBox_estado;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
+    private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
@@ -299,6 +309,7 @@ public class InterGestionarProveedor extends javax.swing.JInternalFrame {
     public javax.swing.JTextField jtxtDireccion;
     public javax.swing.JTextField jtxtIdentificacion;
     public javax.swing.JTextField jtxtNombre;
+    public javax.swing.JTextField jtxtProductos;
     public javax.swing.JTextField jtxtRazonSocial;
     public javax.swing.JTextField jtxtTelefono;
     // End of variables declaration//GEN-END:variables

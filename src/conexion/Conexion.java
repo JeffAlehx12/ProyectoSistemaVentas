@@ -11,7 +11,7 @@ public class Conexion {
     
         try {
             
-            Connection cn = DriverManager.getConnection("jdbc:mysql://localhost/bd_sistema_ventas_general","root","1234");
+            Connection cn = DriverManager.getConnection("jdbc:mysql://localhost/bd_sistema_ventas_actualizado2","root","1234");
            
             return cn;
             

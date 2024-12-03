@@ -107,6 +107,7 @@ public class Frm_Ctrl_GestionarProveedores {
             proveedor.setIdentificacion(vista.jtxtIdentificacion.getText().trim());
             proveedor.setNombre(vista.jtxtNombre.getText().trim());
             proveedor.setApellido(vista.jtxtApellido.getText().trim());
+            proveedor.setProductos(vista.jtxtProductos.getText().trim());
             proveedor.setDireccion(vista.jtxtDireccion.getText().trim());
             proveedor.setTelefono(vista.jtxtTelefono.getText().trim());
             proveedor.setCorreo(vista.jtxtCorreo.getText().trim());
@@ -139,7 +140,7 @@ public class Frm_Ctrl_GestionarProveedores {
         }
     }
     
-     
+    
     
      private void jButton_CancelarActionPerformed(java.awt.event.ActionEvent evt) {                                                 
        
@@ -151,7 +152,7 @@ public class Frm_Ctrl_GestionarProveedores {
          
     }    
      
-     
+    
 
     private void jButton_editarActionPerformed(java.awt.event.ActionEvent evt) {
         int selectedRow = vista.jTable_proveedores.getSelectedRow();
@@ -232,6 +233,7 @@ public class Frm_Ctrl_GestionarProveedores {
         vista.jtxtIdentificacion.setText("");
         vista.jtxtNombre.setText("");
         vista.jtxtApellido.setText("");
+        vista.jtxtProductos.setText("");
         vista.jtxtDireccion.setText("");
         vista.jtxtTelefono.setText("");
         vista.jtxtCorreo.setText("");
@@ -243,16 +245,17 @@ public class Frm_Ctrl_GestionarProveedores {
         boolean respuesta = false;
         Connection cn = Conexion.conectar();
         try {
-            PreparedStatement consulta = cn.prepareStatement("insert into tb_proveedor values(?,?,?,?,?,?,?,?,?)");
+            PreparedStatement consulta = cn.prepareStatement("insert into tb_proveedor values(?,?,?,?,?,?,?,?,?,?)");
             consulta.setInt(1, 0);//id
             consulta.setString(2, objeto.getRazonSocial());
             consulta.setString(3, objeto.getIdentificacion());
             consulta.setString(4, objeto.getNombre());
             consulta.setString(5, objeto.getApellido());
-            consulta.setString(6, objeto.getDireccion());
-            consulta.setString(7, objeto.getTelefono());
-            consulta.setString(8, objeto.getCorreo());
-            consulta.setInt(9, objeto.getEstado());
+            consulta.setString(6, objeto.getProductos());
+            consulta.setString(7, objeto.getDireccion());
+            consulta.setString(8, objeto.getTelefono());
+            consulta.setString(9, objeto.getCorreo());
+            consulta.setInt(10, objeto.getEstado());
             if (consulta.executeUpdate() > 0) {
                 respuesta = true;
             }
@@ -286,16 +289,17 @@ public class Frm_Ctrl_GestionarProveedores {
         boolean respuesta = false;
         Connection cn = Conexion.conectar();
         try {
-            PreparedStatement consulta = cn.prepareStatement("update tb_proveedor set razonSocial=?, identificacion= ?, nombre=?, apellido=?, direccion = ?, telefono= ?, correo = ?, estado = ? where idProveedor = ?");
+            PreparedStatement consulta = cn.prepareStatement("update tb_proveedor set razonSocial=?, identificacion= ?, nombre=?, apellido=?, producto_ofrecido=?, direccion = ?, telefono= ?, correo = ?, estado = ? where idProveedor = ?");
             consulta.setString(1, objeto.getRazonSocial());
             consulta.setString(2, objeto.getIdentificacion());
             consulta.setString(3, objeto.getNombre());
             consulta.setString(4, objeto.getApellido());
-            consulta.setString(5, objeto.getDireccion());
-            consulta.setString(6, objeto.getTelefono());
-            consulta.setString(7, objeto.getCorreo());
-            consulta.setInt(8, objeto.getEstado());
-            consulta.setInt(9, idProveedor);
+            consulta.setString(5, objeto.getProductos());
+            consulta.setString(6, objeto.getDireccion());
+            consulta.setString(7, objeto.getTelefono());
+            consulta.setString(8, objeto.getCorreo());
+            consulta.setInt(9, objeto.getEstado());
+            consulta.setInt(10, idProveedor);
             if (consulta.executeUpdate() > 0) {
                 respuesta = true;
             }
@@ -337,14 +341,15 @@ public class Frm_Ctrl_GestionarProveedores {
             model.addColumn("Ruc/Dni");
             model.addColumn("Nombre");
             model.addColumn("Apellido");
+            model.addColumn("producto_ofrecido");
             model.addColumn("direccion");
             model.addColumn("telefono");
             model.addColumn("correo");
             model.addColumn("estado");
 
             while (rs.next()) {
-                Object fila[] = new Object[9];
-                for (int i = 0; i < 9; i++) {
+                Object fila[] = new Object[10];
+                for (int i = 0; i < 10; i++) {
                     fila[i] = rs.getObject(i + 1);
                 }
                 model.addRow(fila);
@@ -375,6 +380,7 @@ public class Frm_Ctrl_GestionarProveedores {
                     vista.jtxtIdentificacion.setText(rs.getString("identificacion"));
                     vista.jtxtNombre.setText(rs.getString("nombre"));
                     vista.jtxtApellido.setText(rs.getString("apellido"));
+                    vista.jtxtProductos.setText(rs.getString("producto_ofrecido"));
                     vista.jtxtDireccion.setText(rs.getString("direccion"));
                     vista.jtxtTelefono.setText(rs.getString("telefono"));
                     vista.jtxtCorreo.setText(rs.getString("correo"));

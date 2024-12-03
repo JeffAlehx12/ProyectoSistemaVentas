@@ -20,8 +20,15 @@ import javax.swing.JDesktopPane;
 import javax.swing.JInternalFrame;
 import com.raven.form.*;
 import java.awt.Component;
+import java.awt.Font;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
 import java.util.Arrays;
+import javax.swing.BorderFactory;
+import javax.swing.JMenuItem;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
+import javax.swing.JPopupMenu;
 
 
 
@@ -32,7 +39,7 @@ import javax.swing.JPanel;
 public class Main extends javax.swing.JFrame {
 
     
-    
+    public static Main main;
     
      // Panel principal y DesktopPane
     public static JDesktopPane desktopPane;
@@ -258,16 +265,23 @@ public class Main extends javax.swing.JFrame {
 
         panelBorder1 = new com.raven.swing.PanelBorder();
         menu = new com.raven.component.Menu();
-        header2 = new com.raven.component.Header();
         mainPanel = new javax.swing.JPanel();
+        jLabel2 = new javax.swing.JLabel();
+        header1 = new com.raven.component.Header();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setUndecorated(true);
 
-        header2.setFont(new java.awt.Font("sansserif", 0, 14)); // NOI18N
-
         mainPanel.setOpaque(false);
         mainPanel.setLayout(new java.awt.BorderLayout());
+
+        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/raven/icon/menu.png"))); // NOI18N
+        jLabel2.setBorder(javax.swing.BorderFactory.createEmptyBorder(5, 5, 5, 5));
+        jLabel2.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jLabel2MouseClicked(evt);
+            }
+        });
 
         javax.swing.GroupLayout panelBorder1Layout = new javax.swing.GroupLayout(panelBorder1);
         panelBorder1.setLayout(panelBorder1Layout);
@@ -275,18 +289,22 @@ public class Main extends javax.swing.JFrame {
             panelBorder1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(panelBorder1Layout.createSequentialGroup()
                 .addComponent(menu, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGroup(panelBorder1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(header2, javax.swing.GroupLayout.DEFAULT_SIZE, 965, Short.MAX_VALUE)
+                .addGap(6, 6, 6)
+                .addGroup(panelBorder1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(panelBorder1Layout.createSequentialGroup()
-                        .addGap(6, 6, 6)
-                        .addComponent(mainPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addContainerGap())))
+                        .addComponent(header1, javax.swing.GroupLayout.DEFAULT_SIZE, 924, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(mainPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap())
         );
         panelBorder1Layout.setVerticalGroup(
             panelBorder1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(menu, javax.swing.GroupLayout.PREFERRED_SIZE, 657, Short.MAX_VALUE)
             .addGroup(panelBorder1Layout.createSequentialGroup()
-                .addComponent(header2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(panelBorder1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(header1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(mainPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addContainerGap())
@@ -306,6 +324,102 @@ public class Main extends javax.swing.JFrame {
         pack();
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
+
+    private void jLabel2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel2MouseClicked
+        // Crear un JPopupMenu estilizado
+        JPopupMenu popupMenu = new JPopupMenu();
+        popupMenu.setBorder(BorderFactory.createLineBorder(new Color(150, 150, 150), 1)); // Borde más moderno
+        popupMenu.setBackground(new Color(255, 255, 255)); // Fondo blanco para el menú
+
+        // Crear las opciones del menú con estilos
+        JMenuItem opcion1 = new JMenuItem("Configuración general");
+        JMenuItem opcion2 = new JMenuItem("Información Empresa");
+        JMenuItem opcion3 = new JMenuItem("Cerrar sesión");
+
+        // Estilo para las opciones del menú
+        Font font = new Font("Tahoma", Font.PLAIN, 14); // Fuente más agradable y pequeña
+        opcion1.setFont(font);
+        opcion2.setFont(font);
+        opcion3.setFont(font);
+
+        opcion1.setBackground(new Color(255, 255, 255)); // Fondo blanco
+        opcion2.setBackground(new Color(255, 255, 255));
+        opcion3.setBackground(new Color(255, 255, 255));
+
+        opcion1.setForeground(new Color(60, 60, 60)); // Texto gris oscuro, más suave
+        opcion2.setForeground(new Color(60, 60, 60));
+        opcion3.setForeground(new Color(60, 60, 60));
+
+        // Agregar efectos visuales al pasar el ratón
+        MouseAdapter hoverEffect = new MouseAdapter() {
+            @Override
+            public void mouseEntered(MouseEvent e) {
+                ((JMenuItem) e.getSource()).setBackground(new Color(230, 230, 230)); // Fondo claro al pasar el ratón
+            }
+
+            @Override
+            public void mouseExited(MouseEvent e) {
+                ((JMenuItem) e.getSource()).setBackground(Color.WHITE); // Fondo blanco al salir
+            }
+        };
+        opcion1.addMouseListener(hoverEffect);
+        opcion2.addMouseListener(hoverEffect);
+        opcion3.addMouseListener(hoverEffect);
+
+        // Agregar acción a cada opción
+        opcion1.addActionListener(e -> {
+            JOptionPane.showMessageDialog(null, "Abrir configuración general");
+        });
+
+        opcion2.addActionListener(e -> {
+
+            // Cerrar todas las ventanas abiertas en el DesktopPane
+            for (JInternalFrame iframe : Main.desktopPane.getAllFrames()) {
+                iframe.dispose(); // Cierra y elimina la ventana interna
+            }
+
+            // Crear e agregar la ventana de configuración si no está abierta
+            interConfiguracion = new InterConfiguracion();
+            ctrl_Configuracion = new Frm_Ctrl_Configuracion(interConfiguracion);
+
+            Main.desktopPane.add(interConfiguracion);
+            interConfiguracion.setVisible(true);
+        });
+
+        opcion3.addActionListener(e -> {
+
+            int respuesta = JOptionPane.showConfirmDialog(null, "¿Está seguro de que desea cerrar sesión?", "Confirmar cierre de sesión", JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE);
+            if (respuesta == JOptionPane.YES_OPTION) {
+
+                
+                this.dispose();
+
+                // Ahora abre el formulario de login
+                FromLogin fl = new FromLogin();
+                Frm_Ctrl_Login cl = new Frm_Ctrl_Login(fl);
+                fl.setVisible(true);
+                fl.setLocationRelativeTo(null);
+            }
+        });
+
+        // Agregar las opciones al menú
+        popupMenu.add(opcion1);
+        popupMenu.add(opcion2);
+        popupMenu.add(opcion3);
+
+        // Mostrar el menú en la ubicación del clic
+        int x = evt.getX();
+        int y = evt.getY();
+
+        // Ajustar la posición si el menú se sale del contenedor
+        int popupWidth = popupMenu.getPreferredSize().width; // Ancho del menú
+        int screenWidth = jLabel2.getWidth();                // Ancho del JLabel
+        if (x + popupWidth > screenWidth) {
+            x = screenWidth - popupWidth; // Mueve el menú hacia la izquierda
+        }
+
+        popupMenu.show(jLabel2, x, y);
+    }//GEN-LAST:event_jLabel2MouseClicked
 
     /**
      * @param args the command line arguments
@@ -343,7 +457,8 @@ public class Main extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private com.raven.component.Header header2;
+    private com.raven.component.Header header1;
+    private javax.swing.JLabel jLabel2;
     public javax.swing.JPanel mainPanel;
     private com.raven.component.Menu menu;
     private com.raven.swing.PanelBorder panelBorder1;
