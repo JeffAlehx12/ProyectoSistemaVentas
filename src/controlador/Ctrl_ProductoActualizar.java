@@ -237,7 +237,7 @@ public class Ctrl_ProductoActualizar {
                 producto.setUbicacion(vista.jtxt_ubicacion.getText().trim());
                 producto.setCantidad_actual(Integer.parseInt(vista.jtxt_cantidad_inicial.getText().trim()));
                 producto.setStock_min((int) vista.jspn_stockMinimo.getValue());
-                producto.setStock_max((int) vista.jspn_StockMaximo.getValue());
+                
 
                 double precioCosto = Double.parseDouble(vista.jtxt_precioCosto.getText().trim().replace(",", "."));
                 double precioVenta = Double.parseDouble(vista.jtxt_precioVenta.getText().trim().replace(",", "."));
@@ -404,7 +404,7 @@ public class Ctrl_ProductoActualizar {
         vista.jtxt_ubicacion.setText("");
         vista.jtxt_cantidad_inicial.setText("");
         vista.jspn_stockMinimo.setValue(0);
-        vista.jspn_StockMaximo.setValue(0);
+ 
         vista.jtxt_precioCosto.setText("");
         vista.jtxt_precioVenta.setText("");
         vista.jComboBox_categoria.setSelectedIndex(0);

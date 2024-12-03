@@ -179,7 +179,7 @@ public class Frm_Ctrl_GestionarProducto {
             interProductoActualizar.jtxt_ubicacion.setText(rs.getString("ubicacion"));
             interProductoActualizar.jtxt_cantidad_inicial.setText(String.valueOf(rs.getInt("cantidad_actual")));
             interProductoActualizar.jspn_stockMinimo.setValue(rs.getInt("stock_min"));
-            interProductoActualizar.jspn_StockMaximo.setValue(rs.getInt("stock_max"));
+        
             interProductoActualizar.jtxt_precioCosto.setText(String.valueOf(rs.getDouble("precioCosto")));
             interProductoActualizar.jtxt_precioVenta.setText(String.valueOf(rs.getDouble("precioVenta")));
 

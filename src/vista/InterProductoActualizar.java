@@ -45,8 +45,6 @@ public class InterProductoActualizar extends javax.swing.JInternalFrame {
         jtxt_ubicacion = new javax.swing.JTextField();
         jLabel10 = new javax.swing.JLabel();
         jPanel3 = new javax.swing.JPanel();
-        jspn_StockMaximo = new javax.swing.JSpinner();
-        jLabel9 = new javax.swing.JLabel();
         jspn_stockMinimo = new javax.swing.JSpinner();
         jLabel8 = new javax.swing.JLabel();
         jtxt_cantidad_inicial = new javax.swing.JTextField();
@@ -166,15 +164,6 @@ public class InterProductoActualizar extends javax.swing.JInternalFrame {
         jPanel3.setBackground(new java.awt.Color(255, 255, 255));
         jPanel3.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createEtchedBorder(), "Control de Inventario", javax.swing.border.TitledBorder.CENTER, javax.swing.border.TitledBorder.TOP, new java.awt.Font("Tahoma", 1, 14), new java.awt.Color(0, 0, 0))); // NOI18N
         jPanel3.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-
-        jspn_StockMaximo.setModel(new javax.swing.SpinnerNumberModel(0, 0, null, 1));
-        jPanel3.add(jspn_StockMaximo, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 240, 280, 50));
-
-        jLabel9.setFont(new java.awt.Font("Tahoma", 1, 13)); // NOI18N
-        jLabel9.setForeground(new java.awt.Color(0, 0, 0));
-        jLabel9.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
-        jLabel9.setText("Stock Max  (opcional)  ");
-        jPanel3.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 220, 150, 20));
 
         jspn_stockMinimo.setModel(new javax.swing.SpinnerNumberModel(0, 0, null, 1));
         jPanel3.add(jspn_stockMinimo, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 150, 280, 50));
@@ -330,7 +319,6 @@ public class InterProductoActualizar extends javax.swing.JInternalFrame {
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
-    private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
@@ -342,7 +330,6 @@ public class InterProductoActualizar extends javax.swing.JInternalFrame {
     public javax.swing.JButton jbtnQuitar;
     public javax.swing.JButton jbtnRegresar;
     public javax.swing.JLabel jlbImg;
-    public javax.swing.JSpinner jspn_StockMaximo;
     public javax.swing.JSpinner jspn_stockMinimo;
     public javax.swing.JTextField jtxtMargenGanancia;
     public javax.swing.JTextField jtxt_cantidad_inicial;
