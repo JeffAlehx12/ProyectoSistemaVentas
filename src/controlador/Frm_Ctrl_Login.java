@@ -20,10 +20,14 @@ import vista.FromMenu;
 
 
 public class Frm_Ctrl_Login {
+    
 
      private final FromLogin vista;
      public static JDesktopPane jDesktopPane_menu;
-
+     
+     private AlarmaStock alarmaStock = new AlarmaStock();
+     
+     
     public Frm_Ctrl_Login(FromLogin vista) {
         
         this.vista = vista;
@@ -79,6 +83,11 @@ public class Frm_Ctrl_Login {
             
             // Cerrar la vista de inicio de sesión
             vista.dispose();
+            
+            alarmaStock.verificarStock();
+            
+            
+            
 
         } else {
             JOptionPane.showMessageDialog(vista, "Usuario o Clave Incorrectos");
