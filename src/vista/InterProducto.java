@@ -50,6 +50,8 @@ public class InterProducto extends javax.swing.JInternalFrame {
         jLabel8 = new javax.swing.JLabel();
         jtxt_Cantidad_Inicial = new javax.swing.JTextField();
         jLabel3 = new javax.swing.JLabel();
+        jLabel9 = new javax.swing.JLabel();
+        jtxt_Cantidad_Inicial1 = new javax.swing.JTextField();
         jbtnCancelar = new javax.swing.JButton();
         jtxt_precioVenta = new javax.swing.JTextField();
         jLabel11 = new javax.swing.JLabel();
@@ -205,6 +207,22 @@ public class InterProducto extends javax.swing.JInternalFrame {
         jLabel3.setText("Cantidad Inicial: (*)");
         jPanel3.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 40, 140, -1));
 
+        jLabel9.setFont(new java.awt.Font("Tahoma", 1, 13)); // NOI18N
+        jLabel9.setForeground(new java.awt.Color(0, 0, 0));
+        jLabel9.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
+        jLabel9.setText("Fecha Caducidad :");
+        jPanel3.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 220, 140, -1));
+
+        jtxt_Cantidad_Inicial1.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        jtxt_Cantidad_Inicial1.setHorizontalAlignment(javax.swing.JTextField.RIGHT);
+        jtxt_Cantidad_Inicial1.setNextFocusableComponent(jspn_stockMinimo);
+        jtxt_Cantidad_Inicial1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jtxt_Cantidad_Inicial1ActionPerformed(evt);
+            }
+        });
+        jPanel3.add(jtxt_Cantidad_Inicial1, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 240, 260, 50));
+
         jPanel2.add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 40, 360, 330));
 
         jbtnCancelar.setBackground(new java.awt.Color(255, 51, 51));
@@ -329,6 +347,10 @@ public class InterProducto extends javax.swing.JInternalFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_jtxt_Cantidad_InicialActionPerformed
 
+    private void jtxt_Cantidad_Inicial1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jtxt_Cantidad_Inicial1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jtxt_Cantidad_Inicial1ActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     public javax.swing.JComboBox<String> jComboBox_categoria;
@@ -348,6 +370,7 @@ public class InterProducto extends javax.swing.JInternalFrame {
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
+    private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
@@ -362,6 +385,7 @@ public class InterProducto extends javax.swing.JInternalFrame {
     public javax.swing.JSpinner jspn_stockMinimo;
     public javax.swing.JTextField jtxtMargenGanancia;
     public javax.swing.JTextField jtxt_Cantidad_Inicial;
+    public javax.swing.JTextField jtxt_Cantidad_Inicial1;
     public javax.swing.JTextField jtxt_descripcion;
     public javax.swing.JTextField jtxt_nombre;
     public javax.swing.JTextField jtxt_precioCosto;
