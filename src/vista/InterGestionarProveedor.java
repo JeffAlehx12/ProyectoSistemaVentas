@@ -48,12 +48,12 @@ public class InterGestionarProveedor extends javax.swing.JInternalFrame {
         jtxtBusqueda = new javax.swing.JTextField();
         jbtnBuscarporDni = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
+        jLabel11 = new javax.swing.JLabel();
+        jtxtProductos = new javax.swing.JTextField();
         jButton_editar = new javax.swing.JButton();
         jButton_Guardar = new javax.swing.JButton();
         jButton_eliminar = new javax.swing.JButton();
         jButton_Cancelar = new javax.swing.JButton();
-        jLabel11 = new javax.swing.JLabel();
-        jtxtProductos = new javax.swing.JTextField();
         jPanel4 = new javax.swing.JPanel();
         jLabel9 = new javax.swing.JLabel();
 
@@ -183,8 +183,17 @@ public class InterGestionarProveedor extends javax.swing.JInternalFrame {
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/usuario.png"))); // NOI18N
         jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 10, 20, 30));
 
+        jLabel11.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        jLabel11.setForeground(new java.awt.Color(0, 0, 0));
+        jLabel11.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
+        jLabel11.setText("Direccion:");
+        jPanel1.add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 590, 90, -1));
+        jPanel1.add(jtxtProductos, new org.netbeans.lib.awtextra.AbsoluteConstraints(590, 560, 280, -1));
+
         jButton_editar.setBackground(new java.awt.Color(0, 153, 204));
         jButton_editar.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        jButton_editar.setForeground(new java.awt.Color(255, 255, 255));
+        jButton_editar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/editar.png"))); // NOI18N
         jButton_editar.setText("Editar");
         jButton_editar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -195,6 +204,8 @@ public class InterGestionarProveedor extends javax.swing.JInternalFrame {
 
         jButton_Guardar.setBackground(new java.awt.Color(0, 153, 204));
         jButton_Guardar.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        jButton_Guardar.setForeground(new java.awt.Color(255, 255, 255));
+        jButton_Guardar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/guardar.png"))); // NOI18N
         jButton_Guardar.setText("Guardar");
         jButton_Guardar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -205,6 +216,8 @@ public class InterGestionarProveedor extends javax.swing.JInternalFrame {
 
         jButton_eliminar.setBackground(new java.awt.Color(0, 153, 204));
         jButton_eliminar.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        jButton_eliminar.setForeground(new java.awt.Color(255, 255, 255));
+        jButton_eliminar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/eliminar.png"))); // NOI18N
         jButton_eliminar.setText("Eliminar");
         jButton_eliminar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -215,6 +228,8 @@ public class InterGestionarProveedor extends javax.swing.JInternalFrame {
 
         jButton_Cancelar.setBackground(new java.awt.Color(0, 153, 204));
         jButton_Cancelar.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        jButton_Cancelar.setForeground(new java.awt.Color(255, 255, 255));
+        jButton_Cancelar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/cancelar.png"))); // NOI18N
         jButton_Cancelar.setText("Cancelar");
         jButton_Cancelar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -222,13 +237,6 @@ public class InterGestionarProveedor extends javax.swing.JInternalFrame {
             }
         });
         jPanel1.add(jButton_Cancelar, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 490, 130, 40));
-
-        jLabel11.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        jLabel11.setForeground(new java.awt.Color(0, 0, 0));
-        jLabel11.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
-        jLabel11.setText("Direccion:");
-        jPanel1.add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 590, 90, -1));
-        jPanel1.add(jtxtProductos, new org.netbeans.lib.awtextra.AbsoluteConstraints(590, 560, 280, -1));
 
         getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 50, 1580, 800));
 

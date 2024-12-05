@@ -59,7 +59,7 @@ public class InterGestionarCategoria extends javax.swing.JInternalFrame {
 
         jPanel4.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 70, 540, 370));
 
-        jPanel5.setBackground(new java.awt.Color(204, 204, 0));
+        jPanel5.setBackground(new java.awt.Color(0, 0, 0));
         jPanel5.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel9.setFont(new java.awt.Font("Segoe UI Black", 1, 22)); // NOI18N
@@ -93,33 +93,39 @@ public class InterGestionarCategoria extends javax.swing.JInternalFrame {
                 jtxt_nombreCategoriaKeyPressed(evt);
             }
         });
-        jPanel3.add(jtxt_nombreCategoria, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 35, 250, -1));
+        jPanel3.add(jtxt_nombreCategoria, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 35, 250, 30));
 
         jPanel4.add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(570, 70, 280, 80));
 
         jbtnEliminar.setBackground(new java.awt.Color(255, 51, 51));
-        jbtnEliminar.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        jbtnEliminar.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        jbtnEliminar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/eliminar.png"))); // NOI18N
         jbtnEliminar.setText("Eliminar");
         jbtnEliminar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jbtnEliminarActionPerformed(evt);
             }
         });
-        jPanel4.add(jbtnEliminar, new org.netbeans.lib.awtextra.AbsoluteConstraints(720, 160, 130, 40));
+        jPanel4.add(jbtnEliminar, new org.netbeans.lib.awtextra.AbsoluteConstraints(570, 160, 130, 40));
 
-        jbtnGuardar.setBackground(new java.awt.Color(0, 204, 204));
+        jbtnGuardar.setBackground(new java.awt.Color(0, 0, 0));
         jbtnGuardar.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        jbtnGuardar.setForeground(new java.awt.Color(0, 0, 0));
+        jbtnGuardar.setForeground(new java.awt.Color(255, 255, 255));
+        jbtnGuardar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/guardar.png"))); // NOI18N
         jbtnGuardar.setText("Guardar");
         jbtnGuardar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jbtnGuardarActionPerformed(evt);
             }
         });
-        jPanel4.add(jbtnGuardar, new org.netbeans.lib.awtextra.AbsoluteConstraints(570, 160, 130, 40));
+        jPanel4.add(jbtnGuardar, new org.netbeans.lib.awtextra.AbsoluteConstraints(720, 160, 130, 40));
 
-        jbtnCancelar.setText("Cancelar");
-        jPanel4.add(jbtnCancelar, new org.netbeans.lib.awtextra.AbsoluteConstraints(570, 210, 130, 40));
+        jbtnCancelar.setBackground(new java.awt.Color(0, 0, 0));
+        jbtnCancelar.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        jbtnCancelar.setForeground(new java.awt.Color(255, 255, 255));
+        jbtnCancelar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/cancelar.png"))); // NOI18N
+        jbtnCancelar.setText("Limpiar");
+        jPanel4.add(jbtnCancelar, new org.netbeans.lib.awtextra.AbsoluteConstraints(720, 210, 130, 40));
 
         getContentPane().add(jPanel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 890, 480));
 

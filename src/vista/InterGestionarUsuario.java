@@ -42,12 +42,8 @@ public class InterGestionarUsuario extends javax.swing.JInternalFrame {
         jLabel2 = new javax.swing.JLabel();
         jtxtDni = new javax.swing.JTextField();
         jLabel5 = new javax.swing.JLabel();
-        jButton_eliminar = new javax.swing.JButton();
         jComboBox_estado = new javax.swing.JComboBox<>();
         jLabel10 = new javax.swing.JLabel();
-        jButton_Guardar = new javax.swing.JButton();
-        jButton_editar = new javax.swing.JButton();
-        jButton_Cancelar = new javax.swing.JButton();
         jtxtBusqueda = new javax.swing.JTextField();
         jbtnBuscarporDni = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
@@ -57,6 +53,10 @@ public class InterGestionarUsuario extends javax.swing.JInternalFrame {
         jComboBox_Rol = new javax.swing.JComboBox<>();
         jCheckBox_ver_clave = new javax.swing.JCheckBox();
         jtxtUsuario = new javax.swing.JTextField();
+        jButton_editar = new javax.swing.JButton();
+        jButton_Guardar = new javax.swing.JButton();
+        jButton_eliminar = new javax.swing.JButton();
+        jButton_Cancelar = new javax.swing.JButton();
         jPanel4 = new javax.swing.JPanel();
         jLabel9 = new javax.swing.JLabel();
 
@@ -149,16 +149,6 @@ public class InterGestionarUsuario extends javax.swing.JInternalFrame {
         jLabel5.setText("Estado:");
         jPanel1.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(810, 680, 90, 20));
 
-        jButton_eliminar.setBackground(new java.awt.Color(0, 153, 204));
-        jButton_eliminar.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        jButton_eliminar.setText("Eliminar");
-        jButton_eliminar.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton_eliminarActionPerformed(evt);
-            }
-        });
-        jPanel1.add(jButton_eliminar, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 490, 120, 40));
-
         jComboBox_estado.setBackground(new java.awt.Color(255, 255, 255));
         jComboBox_estado.setForeground(new java.awt.Color(0, 0, 0));
         jComboBox_estado.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Activo", "Inactivo" }));
@@ -174,36 +164,6 @@ public class InterGestionarUsuario extends javax.swing.JInternalFrame {
         jLabel10.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         jLabel10.setText("Usuario:");
         jPanel1.add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(810, 560, 90, -1));
-
-        jButton_Guardar.setBackground(new java.awt.Color(0, 153, 204));
-        jButton_Guardar.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        jButton_Guardar.setText("Guardar");
-        jButton_Guardar.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton_GuardarActionPerformed(evt);
-            }
-        });
-        jPanel1.add(jButton_Guardar, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 490, 130, 40));
-
-        jButton_editar.setBackground(new java.awt.Color(0, 153, 204));
-        jButton_editar.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        jButton_editar.setText("Editar");
-        jButton_editar.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton_editarActionPerformed(evt);
-            }
-        });
-        jPanel1.add(jButton_editar, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 490, 130, 40));
-
-        jButton_Cancelar.setBackground(new java.awt.Color(0, 153, 204));
-        jButton_Cancelar.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        jButton_Cancelar.setText("Cancelar");
-        jButton_Cancelar.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton_CancelarActionPerformed(evt);
-            }
-        });
-        jPanel1.add(jButton_Cancelar, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 490, 130, 40));
 
         jtxtBusqueda.addCaretListener(new javax.swing.event.CaretListener() {
             public void caretUpdate(javax.swing.event.CaretEvent evt) {
@@ -261,6 +221,54 @@ public class InterGestionarUsuario extends javax.swing.JInternalFrame {
         });
         jPanel1.add(jtxtUsuario, new org.netbeans.lib.awtextra.AbsoluteConstraints(920, 560, 230, -1));
 
+        jButton_editar.setBackground(new java.awt.Color(0, 153, 204));
+        jButton_editar.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        jButton_editar.setForeground(new java.awt.Color(255, 255, 255));
+        jButton_editar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/editar.png"))); // NOI18N
+        jButton_editar.setText("Editar");
+        jButton_editar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton_editarActionPerformed(evt);
+            }
+        });
+        jPanel1.add(jButton_editar, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 490, 130, 40));
+
+        jButton_Guardar.setBackground(new java.awt.Color(0, 153, 204));
+        jButton_Guardar.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        jButton_Guardar.setForeground(new java.awt.Color(255, 255, 255));
+        jButton_Guardar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/guardar.png"))); // NOI18N
+        jButton_Guardar.setText("Guardar");
+        jButton_Guardar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton_GuardarActionPerformed(evt);
+            }
+        });
+        jPanel1.add(jButton_Guardar, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 490, 130, 40));
+
+        jButton_eliminar.setBackground(new java.awt.Color(0, 153, 204));
+        jButton_eliminar.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        jButton_eliminar.setForeground(new java.awt.Color(255, 255, 255));
+        jButton_eliminar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/eliminar.png"))); // NOI18N
+        jButton_eliminar.setText("Eliminar");
+        jButton_eliminar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton_eliminarActionPerformed(evt);
+            }
+        });
+        jPanel1.add(jButton_eliminar, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 490, 120, 40));
+
+        jButton_Cancelar.setBackground(new java.awt.Color(0, 153, 204));
+        jButton_Cancelar.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        jButton_Cancelar.setForeground(new java.awt.Color(255, 255, 255));
+        jButton_Cancelar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/cancelar.png"))); // NOI18N
+        jButton_Cancelar.setText("Cancelar");
+        jButton_Cancelar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton_CancelarActionPerformed(evt);
+            }
+        });
+        jPanel1.add(jButton_Cancelar, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 490, 130, 40));
+
         getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 50, 1580, 800));
 
         jPanel4.setBackground(new java.awt.Color(27, 177, 221));
@@ -276,30 +284,9 @@ public class InterGestionarUsuario extends javax.swing.JInternalFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jButton_eliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton_eliminarActionPerformed
-
-       
-
-    }//GEN-LAST:event_jButton_eliminarActionPerformed
-
-    private void jButton_editarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton_editarActionPerformed
-        
-       
-        
-        
-    }//GEN-LAST:event_jButton_editarActionPerformed
-
     private void jComboBox_estadoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox_estadoActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jComboBox_estadoActionPerformed
-
-    private void jButton_GuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton_GuardarActionPerformed
-
-    }//GEN-LAST:event_jButton_GuardarActionPerformed
-
-    private void jButton_CancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton_CancelarActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jButton_CancelarActionPerformed
 
     private void jtxtBusquedaCaretUpdate(javax.swing.event.CaretEvent evt) {//GEN-FIRST:event_jtxtBusquedaCaretUpdate
      
@@ -331,6 +318,22 @@ public class InterGestionarUsuario extends javax.swing.JInternalFrame {
     private void jCheckBox_ver_claveMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jCheckBox_ver_claveMouseClicked
 
     }//GEN-LAST:event_jCheckBox_ver_claveMouseClicked
+
+    private void jButton_editarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton_editarActionPerformed
+
+    }//GEN-LAST:event_jButton_editarActionPerformed
+
+    private void jButton_GuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton_GuardarActionPerformed
+
+    }//GEN-LAST:event_jButton_GuardarActionPerformed
+
+    private void jButton_eliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton_eliminarActionPerformed
+
+    }//GEN-LAST:event_jButton_eliminarActionPerformed
+
+    private void jButton_CancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton_CancelarActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jButton_CancelarActionPerformed
 
     
     // Variables declaration - do not modify//GEN-BEGIN:variables

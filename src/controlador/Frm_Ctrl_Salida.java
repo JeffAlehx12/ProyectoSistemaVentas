@@ -345,7 +345,7 @@ public class Frm_Ctrl_Salida {
         model.addColumn("Destinatario");
         model.addColumn("Producto");
         model.addColumn("Categoría");
-        model.addColumn("Proveedor");
+        model.addColumn("Destinatario");
         model.addColumn("Fecha");
         model.addColumn("Cantidad");
         model.addColumn("Precio Unitario");

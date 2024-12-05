@@ -39,8 +39,8 @@ public class InterSalidas extends javax.swing.JInternalFrame {
         jtxtDestinatario = new javax.swing.JTextField();
         jLabel19 = new javax.swing.JLabel();
         jbtnRegistrar = new javax.swing.JButton();
-        jbtnPendiente = new javax.swing.JButton();
         jbtnBuscar = new javax.swing.JButton();
+        jbtnPendiente = new javax.swing.JButton();
         jPanel6 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
@@ -139,14 +139,35 @@ public class InterSalidas extends javax.swing.JInternalFrame {
         jLabel19.setText("Documento");
         jPanel1.add(jLabel19, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 140, -1, -1));
 
-        jbtnRegistrar.setText("REGISTRAR");
-        jPanel1.add(jbtnRegistrar, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 480, 200, 30));
+        jbtnRegistrar.setBackground(new java.awt.Color(255, 102, 102));
+        jbtnRegistrar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/guardar.png"))); // NOI18N
+        jbtnRegistrar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jbtnRegistrarActionPerformed(evt);
+            }
+        });
+        jPanel1.add(jbtnRegistrar, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 490, 70, 60));
 
+        jbtnBuscar.setBackground(new java.awt.Color(255, 102, 102));
+        jbtnBuscar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/buscar.png"))); // NOI18N
+        jbtnBuscar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jbtnBuscarActionPerformed(evt);
+            }
+        });
+        jPanel1.add(jbtnBuscar, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 490, 70, 60));
+
+        jbtnPendiente.setBackground(new java.awt.Color(255, 102, 102));
+        jbtnPendiente.setFont(new java.awt.Font("Segoe UI Black", 0, 12)); // NOI18N
+        jbtnPendiente.setForeground(new java.awt.Color(255, 255, 255));
+        jbtnPendiente.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/proceso.png"))); // NOI18N
         jbtnPendiente.setText("PENDIENTE");
-        jPanel1.add(jbtnPendiente, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 520, 200, 30));
-
-        jbtnBuscar.setText("BUSCAR");
-        jPanel1.add(jbtnBuscar, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 560, 200, 30));
+        jbtnPendiente.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jbtnPendienteActionPerformed(evt);
+            }
+        });
+        jPanel1.add(jbtnPendiente, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 560, 150, 50));
 
         getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 70, 260, 780));
 
@@ -393,6 +414,18 @@ public class InterSalidas extends javax.swing.JInternalFrame {
     private void jbtnBuscarProductoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbtnBuscarProductoActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jbtnBuscarProductoActionPerformed
+
+    private void jbtnRegistrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbtnRegistrarActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jbtnRegistrarActionPerformed
+
+    private void jbtnBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbtnBuscarActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jbtnBuscarActionPerformed
+
+    private void jbtnPendienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbtnPendienteActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jbtnPendienteActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

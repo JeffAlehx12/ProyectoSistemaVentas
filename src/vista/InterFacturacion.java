@@ -27,9 +27,6 @@ public class InterFacturacion extends javax.swing.JInternalFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jPanel1 = new javax.swing.JPanel();
-        jScrollPane1 = new javax.swing.JScrollPane();
-        jTable_productos = new javax.swing.JTable();
         jPanel3 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
@@ -56,35 +53,17 @@ public class InterFacturacion extends javax.swing.JInternalFrame {
         txt_cambio = new javax.swing.JTextField();
         jButton_calcular_cambio = new javax.swing.JButton();
         jButton_RegistrarVenta = new javax.swing.JButton();
+        jbtnConsultaIA = new javax.swing.JButton();
+        jPanel1 = new javax.swing.JPanel();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        jTable_productos = new javax.swing.JTable();
+        jLabel12 = new javax.swing.JLabel();
+        jLabel13 = new javax.swing.JLabel();
+        jLabel11 = new javax.swing.JLabel();
 
         setClosable(true);
         setIconifiable(true);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-
-        jPanel1.setBorder(javax.swing.BorderFactory.createEtchedBorder());
-        jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-
-        jTable_productos.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null}
-            },
-            new String [] {
-                "Title 1", "Title 2", "Title 3", "Title 4"
-            }
-        ));
-        jTable_productos.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jTable_productosMouseClicked(evt);
-            }
-        });
-        jScrollPane1.setViewportView(jTable_productos);
-
-        jPanel1.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, 1050, 350));
-
-        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 160, 1070, 370));
 
         jPanel3.setBackground(new java.awt.Color(255, 255, 255));
         jPanel3.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -92,13 +71,13 @@ public class InterFacturacion extends javax.swing.JInternalFrame {
         jLabel1.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(0, 0, 0));
         jLabel1.setText("Registro de Venta");
-        jPanel3.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 10, -1, -1));
+        jPanel3.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 30, -1, 30));
 
         jLabel2.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         jLabel2.setForeground(new java.awt.Color(0, 0, 0));
         jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
-        jLabel2.setText("Cliente:");
-        jPanel3.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 50, 80, -1));
+        jLabel2.setText("Dni:");
+        jPanel3.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 90, 80, 30));
 
         jComboBox_cliente.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         jComboBox_cliente.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -106,46 +85,48 @@ public class InterFacturacion extends javax.swing.JInternalFrame {
                 jComboBox_clienteMouseClicked(evt);
             }
         });
-        jPanel3.add(jComboBox_cliente, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 50, 170, -1));
+        jPanel3.add(jComboBox_cliente, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 130, 180, 40));
 
         txt_cliente_buscar.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
-        jPanel3.add(txt_cliente_buscar, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 50, 210, 30));
+        jPanel3.add(txt_cliente_buscar, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 90, 180, 30));
 
+        jButton_busca_cliente.setBackground(new java.awt.Color(255, 255, 255));
         jButton_busca_cliente.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
-        jButton_busca_cliente.setText("Buscar");
+        jButton_busca_cliente.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/lupa.png"))); // NOI18N
         jButton_busca_cliente.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton_busca_clienteActionPerformed(evt);
             }
         });
-        jPanel3.add(jButton_busca_cliente, new org.netbeans.lib.awtextra.AbsoluteConstraints(660, 50, 80, -1));
+        jPanel3.add(jButton_busca_cliente, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 90, 40, 30));
 
+        jButton_añadir_producto.setBackground(new java.awt.Color(255, 255, 255));
         jButton_añadir_producto.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
-        jButton_añadir_producto.setText("Añadir Productos");
+        jButton_añadir_producto.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/carrito.png"))); // NOI18N
         jButton_añadir_producto.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton_añadir_productoActionPerformed(evt);
             }
         });
-        jPanel3.add(jButton_añadir_producto, new org.netbeans.lib.awtextra.AbsoluteConstraints(660, 100, 150, 30));
+        jPanel3.add(jButton_añadir_producto, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 240, 50, 40));
 
         txt_cantidad.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
-        jPanel3.add(txt_cantidad, new org.netbeans.lib.awtextra.AbsoluteConstraints(510, 90, 130, 30));
+        jPanel3.add(txt_cantidad, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 240, 120, 40));
 
         jComboBox_producto.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
-        jPanel3.add(jComboBox_producto, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 100, 170, -1));
+        jPanel3.add(jComboBox_producto, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 180, 180, 40));
 
         jLabel3.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         jLabel3.setForeground(new java.awt.Color(0, 0, 0));
         jLabel3.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         jLabel3.setText("Producto:");
-        jPanel3.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 100, -1, -1));
+        jPanel3.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 190, -1, -1));
 
         jLabel4.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         jLabel4.setForeground(new java.awt.Color(0, 0, 0));
         jLabel4.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         jLabel4.setText("Cantidad:");
-        jPanel3.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 100, 80, -1));
+        jPanel3.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 250, 80, -1));
 
         jPanel2.setBackground(new java.awt.Color(255, 255, 255));
         jPanel2.setBorder(javax.swing.BorderFactory.createEtchedBorder());
@@ -199,7 +180,7 @@ public class InterFacturacion extends javax.swing.JInternalFrame {
         txt_cambio.setEnabled(false);
         jPanel2.add(txt_cambio, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 180, 120, -1));
 
-        jButton_calcular_cambio.setBackground(new java.awt.Color(51, 255, 255));
+        jButton_calcular_cambio.setBackground(new java.awt.Color(51, 153, 255));
         jButton_calcular_cambio.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         jButton_calcular_cambio.setText("Calcular Cambio");
         jButton_calcular_cambio.addActionListener(new java.awt.event.ActionListener() {
@@ -209,9 +190,9 @@ public class InterFacturacion extends javax.swing.JInternalFrame {
         });
         jPanel2.add(jButton_calcular_cambio, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 150, 130, 50));
 
-        jPanel3.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 560, 420, 270));
+        jPanel3.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 460, 370, 270));
 
-        jButton_RegistrarVenta.setBackground(new java.awt.Color(51, 255, 255));
+        jButton_RegistrarVenta.setBackground(new java.awt.Color(51, 153, 255));
         jButton_RegistrarVenta.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         jButton_RegistrarVenta.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/impresora.png"))); // NOI18N
         jButton_RegistrarVenta.setText("Registrar Venta");
@@ -222,7 +203,58 @@ public class InterFacturacion extends javax.swing.JInternalFrame {
                 jButton_RegistrarVentaActionPerformed(evt);
             }
         });
-        jPanel3.add(jButton_RegistrarVenta, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 570, 210, 140));
+        jPanel3.add(jButton_RegistrarVenta, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 320, 130, 90));
+
+        jbtnConsultaIA.setBackground(new java.awt.Color(255, 255, 255));
+        jbtnConsultaIA.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        jbtnConsultaIA.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/ai.png"))); // NOI18N
+        jbtnConsultaIA.setBorder(null);
+        jbtnConsultaIA.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jbtnConsultaIAActionPerformed(evt);
+            }
+        });
+        jPanel3.add(jbtnConsultaIA, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 330, 110, 80));
+
+        jPanel1.setBackground(new java.awt.Color(255, 255, 255));
+        jPanel1.setBorder(javax.swing.BorderFactory.createEtchedBorder());
+        jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jTable_productos.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null}
+            },
+            new String [] {
+                "Title 1", "Title 2", "Title 3", "Title 4"
+            }
+        ));
+        jTable_productos.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jTable_productosMouseClicked(evt);
+            }
+        });
+        jScrollPane1.setViewportView(jTable_productos);
+
+        jPanel1.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, 980, 630));
+
+        jPanel3.add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 80, 1000, 650));
+
+        jLabel12.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        jLabel12.setForeground(new java.awt.Color(0, 0, 0));
+        jLabel12.setText("Consultas IA");
+        jPanel3.add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 310, -1, -1));
+
+        jLabel13.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/venta.png"))); // NOI18N
+        jPanel3.add(jLabel13, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 10, 70, 60));
+
+        jLabel11.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        jLabel11.setForeground(new java.awt.Color(0, 0, 0));
+        jLabel11.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
+        jLabel11.setText("Cliente:");
+        jPanel3.add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 140, 80, -1));
 
         getContentPane().add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1600, 890));
 
@@ -254,6 +286,10 @@ public class InterFacturacion extends javax.swing.JInternalFrame {
        
     }//GEN-LAST:event_jComboBox_clienteMouseClicked
 
+    private void jbtnConsultaIAActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbtnConsultaIAActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jbtnConsultaIAActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     public javax.swing.JButton jButton_RegistrarVenta;
@@ -264,6 +300,9 @@ public class InterFacturacion extends javax.swing.JInternalFrame {
     public javax.swing.JComboBox<String> jComboBox_producto;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
+    private javax.swing.JLabel jLabel11;
+    private javax.swing.JLabel jLabel12;
+    private javax.swing.JLabel jLabel13;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
@@ -277,6 +316,7 @@ public class InterFacturacion extends javax.swing.JInternalFrame {
     private javax.swing.JPanel jPanel3;
     public static javax.swing.JScrollPane jScrollPane1;
     public static javax.swing.JTable jTable_productos;
+    public javax.swing.JButton jbtnConsultaIA;
     public javax.swing.JTextField txt_cambio;
     public javax.swing.JTextField txt_cantidad;
     public javax.swing.JTextField txt_cliente_buscar;

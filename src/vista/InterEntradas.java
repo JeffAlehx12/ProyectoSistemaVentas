@@ -36,8 +36,8 @@ public class InterEntradas extends javax.swing.JInternalFrame {
         jcbxMotivo = new javax.swing.JComboBox<>();
         jLabel18 = new javax.swing.JLabel();
         jtxtObs = new javax.swing.JTextField();
-        jbtnBuscar = new javax.swing.JButton();
         jbtnRegistrar = new javax.swing.JButton();
+        jbtnBuscar = new javax.swing.JButton();
         jbtnPendiente = new javax.swing.JButton();
         jPanel2 = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
@@ -73,12 +73,14 @@ public class InterEntradas extends javax.swing.JInternalFrame {
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
+        jLabel2.setForeground(new java.awt.Color(0, 0, 0));
         jLabel2.setText("ID Entrada");
         jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 30, -1, -1));
 
         jtxtEntrada.setEnabled(false);
         jPanel1.add(jtxtEntrada, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 50, 96, -1));
 
+        jLabel3.setForeground(new java.awt.Color(0, 0, 0));
         jLabel3.setText("Motivo");
         jPanel1.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 80, -1, -1));
 
@@ -89,12 +91,15 @@ public class InterEntradas extends javax.swing.JInternalFrame {
         });
         jPanel1.add(jtxtCantidad, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 260, 205, -1));
 
+        jLabel5.setForeground(new java.awt.Color(0, 0, 0));
         jLabel5.setText("Cantidad");
         jPanel1.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 240, -1, -1));
 
+        jLabel6.setForeground(new java.awt.Color(0, 0, 0));
         jLabel6.setText("Fecha");
         jPanel1.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 190, -1, -1));
 
+        jLabel7.setForeground(new java.awt.Color(0, 0, 0));
         jLabel7.setText("Precio Costo");
         jPanel1.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 290, -1, -1));
 
@@ -105,6 +110,7 @@ public class InterEntradas extends javax.swing.JInternalFrame {
         });
         jPanel1.add(jtxtPrecioCosto, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 310, 205, -1));
 
+        jLabel10.setForeground(new java.awt.Color(0, 0, 0));
         jLabel10.setText("Documento");
         jPanel1.add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 140, -1, -1));
         jPanel1.add(jtxtDocumento, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 160, 205, -1));
@@ -115,6 +121,7 @@ public class InterEntradas extends javax.swing.JInternalFrame {
         jcbxMotivo.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Seleccionar Motivo", "Compra", "Devolucion", "Transferencia de Almacen", "Ajuste de Inventario" }));
         jPanel1.add(jcbxMotivo, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 100, 200, 30));
 
+        jLabel18.setForeground(new java.awt.Color(0, 0, 0));
         jLabel18.setText("Obs");
         jPanel1.add(jLabel18, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 350, 60, -1));
 
@@ -127,14 +134,35 @@ public class InterEntradas extends javax.swing.JInternalFrame {
         });
         jPanel1.add(jtxtObs, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 370, 200, 50));
 
-        jbtnBuscar.setText("BUSCAR");
-        jPanel1.add(jbtnBuscar, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 540, 200, 50));
+        jbtnRegistrar.setBackground(new java.awt.Color(0, 153, 204));
+        jbtnRegistrar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/guardar.png"))); // NOI18N
+        jbtnRegistrar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jbtnRegistrarActionPerformed(evt);
+            }
+        });
+        jPanel1.add(jbtnRegistrar, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 460, 70, 60));
 
-        jbtnRegistrar.setText("REGISTRAR");
-        jPanel1.add(jbtnRegistrar, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 440, 200, 50));
+        jbtnBuscar.setBackground(new java.awt.Color(0, 153, 204));
+        jbtnBuscar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/buscar.png"))); // NOI18N
+        jbtnBuscar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jbtnBuscarActionPerformed(evt);
+            }
+        });
+        jPanel1.add(jbtnBuscar, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 460, 70, 60));
 
+        jbtnPendiente.setBackground(new java.awt.Color(0, 153, 204));
+        jbtnPendiente.setFont(new java.awt.Font("Segoe UI Black", 0, 12)); // NOI18N
+        jbtnPendiente.setForeground(new java.awt.Color(255, 255, 255));
+        jbtnPendiente.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/proceso.png"))); // NOI18N
         jbtnPendiente.setText("PENDIENTE");
-        jPanel1.add(jbtnPendiente, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 490, 200, 50));
+        jbtnPendiente.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jbtnPendienteActionPerformed(evt);
+            }
+        });
+        jPanel1.add(jbtnPendiente, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 530, 150, 50));
 
         getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 70, 250, 780));
 
@@ -379,6 +407,18 @@ public class InterEntradas extends javax.swing.JInternalFrame {
     private void jbtnBuscarProductoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbtnBuscarProductoActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jbtnBuscarProductoActionPerformed
+
+    private void jbtnRegistrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbtnRegistrarActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jbtnRegistrarActionPerformed
+
+    private void jbtnBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbtnBuscarActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jbtnBuscarActionPerformed
+
+    private void jbtnPendienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbtnPendienteActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jbtnPendienteActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

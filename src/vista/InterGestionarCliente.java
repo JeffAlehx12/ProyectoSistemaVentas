@@ -172,6 +172,8 @@ public class InterGestionarCliente extends javax.swing.JInternalFrame {
 
         jButton_editar.setBackground(new java.awt.Color(0, 153, 204));
         jButton_editar.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        jButton_editar.setForeground(new java.awt.Color(255, 255, 255));
+        jButton_editar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/editar.png"))); // NOI18N
         jButton_editar.setText("Editar");
         jButton_editar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -182,6 +184,8 @@ public class InterGestionarCliente extends javax.swing.JInternalFrame {
 
         jButton_Guardar.setBackground(new java.awt.Color(0, 153, 204));
         jButton_Guardar.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        jButton_Guardar.setForeground(new java.awt.Color(255, 255, 255));
+        jButton_Guardar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/guardar.png"))); // NOI18N
         jButton_Guardar.setText("Guardar");
         jButton_Guardar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -192,6 +196,8 @@ public class InterGestionarCliente extends javax.swing.JInternalFrame {
 
         jButton_eliminar.setBackground(new java.awt.Color(0, 153, 204));
         jButton_eliminar.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        jButton_eliminar.setForeground(new java.awt.Color(255, 255, 255));
+        jButton_eliminar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/eliminar.png"))); // NOI18N
         jButton_eliminar.setText("Eliminar");
         jButton_eliminar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -202,6 +208,8 @@ public class InterGestionarCliente extends javax.swing.JInternalFrame {
 
         jButton_Cancelar.setBackground(new java.awt.Color(0, 153, 204));
         jButton_Cancelar.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        jButton_Cancelar.setForeground(new java.awt.Color(255, 255, 255));
+        jButton_Cancelar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/cancelar.png"))); // NOI18N
         jButton_Cancelar.setText("Cancelar");
         jButton_Cancelar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {

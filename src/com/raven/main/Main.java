@@ -19,11 +19,17 @@ import java.awt.Toolkit;
 import javax.swing.JDesktopPane;
 import javax.swing.JInternalFrame;
 import com.raven.form.*;
+import conexion.Conexion;
+import java.sql.*;
 import java.awt.Component;
 import java.awt.Font;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 import javax.swing.BorderFactory;
 import javax.swing.JMenuItem;
 import javax.swing.JOptionPane;
@@ -58,6 +64,7 @@ public class Main extends javax.swing.JFrame {
     private InterGestionarVentas interGestionarVentas;
     private InterHistorialVentas interHistorialVentas;
     private InterConfiguracion interConfiguracion;
+    private InterAuditoria interAuditoria;
     
     
     // Controladores
@@ -72,6 +79,7 @@ public class Main extends javax.swing.JFrame {
     private Frm_Ctrl_GestionarVentas ctrl_GestionarVentas;
     private Frm_Ctrl_HistorialVentas ctrl_HistorialVentas;
     private Frm_Ctrl_Configuracion ctrl_Configuracion;
+    private Ctrl_Auditoria ctrl_Auditoria;
     
     private Reportes reportes;
    
@@ -126,6 +134,8 @@ public class Main extends javax.swing.JFrame {
         interGestionarVentas = new InterGestionarVentas();
         interHistorialVentas = new InterHistorialVentas();
         interConfiguracion = new InterConfiguracion();
+        interAuditoria = new InterAuditoria();
+        
         
         
         //Inicializa los controladores
@@ -140,15 +150,23 @@ public class Main extends javax.swing.JFrame {
         ctrl_GestionarVentas = new Frm_Ctrl_GestionarVentas(interGestionarVentas);
         ctrl_HistorialVentas = new Frm_Ctrl_HistorialVentas(interHistorialVentas);
         ctrl_Configuracion = new Frm_Ctrl_Configuracion(interConfiguracion);
+        ctrl_Auditoria = new Ctrl_Auditoria(interAuditoria);
+        
                 
         this.reportes = new Reportes(); 
-
+        
         
         // Inicializa el menú
         menu.initMoving(Main.this);
         menu.addEventMenuSelected(new EventMenuSelected() {
             @Override
             public void selected(int index) {
+                String rolUsuario = obtenerRolUsuarioEnSesion(); // Obtiene el rol del usuario en sesión
+                if (!tieneAcceso(rolUsuario, index)) {
+                    JOptionPane.showMessageDialog(null, "Acceso denegado para tu rol.");
+                    return;
+                }
+                // Si tiene acceso, ejecuta la acción correspondiente
                 switch (index) {
                     case 0:
                         setForm(home);
@@ -163,12 +181,12 @@ public class Main extends javax.swing.JFrame {
                         break;
                     case 6:
                         setForm(interEntradas);
-                        break; 
+                        break;
                     case 7:
                         interSalidas = new InterSalidas();
                         ctrl_Salida = new Frm_Ctrl_Salida(interSalidas);
                         setForm(interSalidas);
-                        break;  
+                        break;
                     case 8:
                         interInventario = new InterInventario();
                         ctrl_Inventario = new Frm_Ctrl_Inventario(interInventario);
@@ -193,19 +211,24 @@ public class Main extends javax.swing.JFrame {
                         break;
                     case 18:
                         reportes.ReportesCategorias();
-                        break;    
+                        break;
                     case 19:
                         reportes.ReportesProductos();
-                        break;    
+                        break;
                     case 20:
                         reportes.ReportesVentas();
-                        break; 
+                        break;
                     case 22:
                         setForm(interHistorialVentas);
-                        break;   
+                        break;
                     case 24:
                         setForm(interConfiguracion);
-                        break;       
+                        break;
+                    case 26:
+                        interAuditoria = new InterAuditoria();
+                        ctrl_Auditoria = new Ctrl_Auditoria(interAuditoria);
+                        setForm(interAuditoria);
+                        break;
                 }
             }
         });
@@ -248,10 +271,37 @@ public class Main extends javax.swing.JFrame {
         desktopPane.repaint();
     }
 
-   public void cerrarVentana() {
-       this.dispose();
+    // Método para verificar el rol del usuario en sesión
+    public String obtenerRolUsuarioEnSesion() {
+        Connection cn = Conexion.conectar();
+        String rol = null;
+        String sql = """
+        SELECT u.rol
+        FROM tb_sesion_usuario su
+        JOIN tb_usuario u ON su.idUsuario = u.idUsuario
+        ORDER BY su.fecha_inicio DESC
+        LIMIT 1;
+    """;
+        try (PreparedStatement ps = cn.prepareStatement(sql); ResultSet rs = ps.executeQuery()) {
+            if (rs.next()) {
+                rol = rs.getString("rol");
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return rol;
     }
 
+// Método para verificar acceso por rol y menú
+    public boolean tieneAcceso(String rol, int indexMenu) {
+        // Define los accesos permitidos para cada rol
+        Map<String, List<Integer>> accesosPorRol = new HashMap<>();
+        accesosPorRol.put("Admin", Arrays.asList(0, 2, 4, 6, 7, 8, 10, 12, 14, 15, 17, 18, 19, 20, 22, 24, 26));
+        accesosPorRol.put("Usuario", Arrays.asList(0, 8, 12, 15, 22, 14));
+
+        // Validar si el rol tiene acceso al índice del menú
+        return accesosPorRol.getOrDefault(rol, new ArrayList<>()).contains(indexMenu);
+    }
 
 
     /**
@@ -300,7 +350,7 @@ public class Main extends javax.swing.JFrame {
         );
         panelBorder1Layout.setVerticalGroup(
             panelBorder1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(menu, javax.swing.GroupLayout.PREFERRED_SIZE, 657, Short.MAX_VALUE)
+            .addComponent(menu, javax.swing.GroupLayout.DEFAULT_SIZE, 854, Short.MAX_VALUE)
             .addGroup(panelBorder1Layout.createSequentialGroup()
                 .addGroup(panelBorder1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)

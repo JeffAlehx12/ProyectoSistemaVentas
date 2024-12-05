@@ -162,6 +162,13 @@ public class Frm_Ctrl_RegistrarVenta {
             }
         });
         
+        vista.jbtnConsultaIA.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                jbtnConsultaIAActionPerformed(e);
+            }
+        });
+        
         
         InterFacturacion.jTable_productos.addMouseListener(new MouseAdapter() {
           
@@ -186,6 +193,8 @@ public class Frm_Ctrl_RegistrarVenta {
                 jComboBox_productoMouseClicked(evt);
             }
         });
+          
+          
         
     }
     
@@ -217,7 +226,17 @@ public class Frm_Ctrl_RegistrarVenta {
     
 
     //proceso de botones...
-    
+     private void jbtnConsultaIAActionPerformed(java.awt.event.ActionEvent evt) {
+
+        try {
+            // Abre el enlace en el navegador predeterminado
+            String url = "https://boticas-l-r-system-o362bi.flutterflow.app/";
+            java.awt.Desktop.getDesktop().browse(java.net.URI.create(url));
+        } catch (Exception e) {
+            e.printStackTrace(); // Imprime cualquier error
+        }
+ 
+    }  
     
     private void jButton_busca_clienteActionPerformed(java.awt.event.ActionEvent evt) { 
     
