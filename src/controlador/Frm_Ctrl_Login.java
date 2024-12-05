@@ -11,8 +11,13 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import javax.swing.BorderFactory;
 import javax.swing.JDesktopPane;
+import javax.swing.JFrame;
+import javax.swing.JInternalFrame;
 import javax.swing.JOptionPane;
+import javax.swing.JRootPane;
+import javax.swing.plaf.basic.BasicInternalFrameUI;
 import modelo.Usuario;
 import vista.FromLogin;
 import vista.FromMenu;
@@ -34,8 +39,24 @@ public class Frm_Ctrl_Login {
         this.vista.setResizable(false);
         this.vista.setLocationRelativeTo(null);
         this.vista.setTitle("Login - SISTEMA DE VENTAS");
-        this.vista.setSize(new Dimension(700, 500));
+        this.vista.setSize(new Dimension(1200, 700));
         this.vista.jButton_IniciarSesion.addActionListener(e -> jButton_IniciarSesionActionPerformed(e));
+        
+        
+        
+        
+        vista.getRootPane().setWindowDecorationStyle(JRootPane.NONE); // Elimina decoración adicional
+
+            // Opcional: Forzar la actualización de la ventana
+        vista.revalidate();
+        vista.repaint();
+        
+        vista.toFront();
+        
+        
+        
+        
+        
 
         // Agregar KeyListener para txt_usuario
         this.vista.txt_usuario.addKeyListener(new KeyAdapter() {
